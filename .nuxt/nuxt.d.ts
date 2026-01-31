@@ -1,0 +1,19 @@
+/// <reference types="@nuxtjs/tailwindcss" />
+/// <reference types="@nuxt/telemetry" />
+/// <reference path="types/nitro-layouts.d.ts" />
+/// <reference path="types/builder-env.d.ts" />
+/// <reference types="nuxt" />
+/// <reference path="types/app-defaults.d.ts" />
+/// <reference path="types/plugins.d.ts" />
+/// <reference path="types/build.d.ts" />
+/// <reference path="types/schema.d.ts" />
+/// <reference path="types/app.config.d.ts" />
+/// <reference types="/home/projects/nuxt-starter-2ofdjckc/node_modules/.pnpm/@nuxt+nitro-server@3.21.0_nuxt@3.21.0/node_modules/@nuxt/nitro-server/dist/index.mjs" />
+/// <reference path="types/middleware.d.ts" />
+/// <reference path="types/components.d.ts" />
+/// <reference path="imports.d.ts" />
+/// <reference path="types/imports.d.ts" />
+/// <reference path="schema/nuxt.schema.d.ts" />
+/// <reference path="types/nitro.d.ts" />
+
+export {}
