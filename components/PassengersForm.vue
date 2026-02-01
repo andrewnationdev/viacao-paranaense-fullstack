@@ -1,0 +1,97 @@
+<template>
+<div
+    v-if="selectedSeats.length > 0 && seatsConfirmed"
+    class="min-h-screen bg-gray-100 p-5 font-sans"
+  >
+    <div class="max-w-md mx-auto">
+      <div
+        class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-teal-500"
+      >
+        <h2
+          class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"
+        >
+          <span>👤</span> Dados dos Passageiros
+        </h2>
+
+        <form @submit.prevent="finalizarReserva" class="space-y-6">
+          <div
+            v-for="seat in selectedSeats.sort((a, b) => a - b)"
+            :key="seat"
+            class="p-4 bg-gray-50 rounded-xl border border-gray-100 flex flex-col gap-3"
+          >
+            <div class="flex items-center justify-between">
+              <span
+                class="text-xs font-bold text-blue-600 uppercase tracking-wider"
+                >Poltrona</span
+              >
+              <span
+                class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-black"
+                >{{ seat }}</span
+              >
+            </div>
+
+            <div class="flex flex-col">
+              <label
+                class="text-[10px] font-bold text-gray-400 uppercase mb-1 ml-1"
+                >CPF do Passageiro</label
+              >
+              <input
+                type="text"
+                v-model="passengers[seat]"
+                placeholder="000.000.000-00"
+                class="p-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none transition-all text-gray-700"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-[10px] text-gray-400 uppercase leading-none"
+              >Valor a Pagar</span
+            >
+            <span class="text-xl font-bold text-green-500 mt-1">
+              R$
+              {{ ticketPrice.toFixed(2).replace('.', ',') }}
+            </span>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-black rounded-xl shadow-lg shadow-green-100 transition-all active:scale-95"
+          >
+            Realizar o Pagamento
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </template>
+
+  <script setup>
+  const {
+  origemSelecionada,
+  isInSearchMode,
+  dataSelecionada,
+  id_selecionado,
+  destinoSelecionado,
+  citiesData,
+  routesData,
+  selectedSeats,
+  seatsConfirmed,
+  passengers,
+  ticketPrice
+} = useBusStore();
+
+const finalizarReserva = async () => {
+    const payload = {
+      viagemId: id_selecionado.value,
+      data: dataSelecionada.value,
+      reservas: Object.entries(passengers).map(([seat, cpf]) => ({
+        poltrona: Number(seat),
+        documento: cpf,
+      })),
+    };
+    console.log('Enviando para a API:', payload);
+    alert('Reserva enviada com sucesso!');
+  };
+  </script>

@@ -83,7 +83,7 @@ import { reactive, watch } from 'vue';
 
 const {
   origemSelecionada,
-  buscaRealizada,
+  isInSearchMode,
   dataSelecionada,
   id_selecionado,
   destinoSelecionado,
@@ -110,7 +110,7 @@ const destinosDisponiveis = computed(() => {
 
   watch(origemSelecionada, () => {
     destinoSelecionado.value = '';
-    buscaRealizada.value = false;
+    isInSearchMode.value = false;
   });
 
   const idsUnicos = [...new Set(idsDestinosViaveis)];
@@ -120,7 +120,7 @@ const destinosDisponiveis = computed(() => {
 
 const handleSearch = () => {
   if (origemSelecionada.value && destinoSelecionado.value) {
-    buscaRealizada.value = true;
+    isInSearchMode.value = true;
     id_selecionado.value = null;
   }
 };
