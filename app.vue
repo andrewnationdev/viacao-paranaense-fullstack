@@ -8,6 +8,7 @@
   </div>
   <SeatsSelector/>
   <PassengersForm/>
+  <Footer/>
 </template>
 
 <script setup>

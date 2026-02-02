@@ -17,6 +17,9 @@ dependencies:
   '@oxc-transform/binding-wasm32-wasi':
     specifier: 0.111.0
     version: 0.111.0
+  lucide-vue-next:
+    specifier: ^0.563.0
+    version: 0.563.0(vue@3.5.27)
   nuxt:
     specifier: ^3.21.0
     version: 3.21.0(@vue/compiler-sfc@3.5.27)(vite@7.3.1)
@@ -4386,6 +4389,14 @@ packages:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
     dependencies:
       yallist: 3.1.1
+    dev: false
+
+  /lucide-vue-next@0.563.0(vue@3.5.27):
+    resolution: {integrity: sha512-zsE/lCKtmaa7bGfhSpN84br1K9YoQ5pCN+2oKWjQQG3Lo6ufUUKBuHSjNFI6RvUevxaajNXb8XwFUKeTXG3sIA==}
+    peerDependencies:
+      vue: '>=3.0.1'
+    dependencies:
+      vue: 3.5.27
     dev: false
 
   /magic-regexp@0.10.0:
