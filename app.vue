@@ -6,17 +6,17 @@
     <RoutesList :viagens="viagens" :cidades="cidades" :cities_array="citiesMap" v-if="isInSearchMode"/>
     <NotFound v-else/>
   </div>
+  <SectionMainDestinations v-if="mainDestinations && citiesMap" :cities="mainDestinations" :cities_array='citiesMap'/>
+  <SectionAbout/>
   <SeatsSelector/>
   <PassengersForm/>
   <Footer/>
 </template>
 
 <script setup>
-import { ref, reactive, watch } from 'vue';
-import { calculateEstimatedArrival } from './utils/calculate';
-
 const { data: cidades } = await useFetch('/api/get_cidades');
 const { data: viagens } = await useFetch('/api/get_viagens');
+const { data: mainDestinations } = await useFetch('/api/get_main_destinations');
 
 const {
   origemSelecionada,
