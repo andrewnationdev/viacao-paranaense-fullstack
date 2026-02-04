@@ -80,7 +80,6 @@
 
 <script setup>
 import { reactive, watch } from 'vue';
-import { vMaska } from "maska"
 
 const {
   origemSelecionada,

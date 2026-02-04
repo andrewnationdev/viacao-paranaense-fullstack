@@ -71,7 +71,7 @@
 
   <script setup>
   import { ref, onMounted } from 'vue';
-  import { vMaska } from "maska"
+  import { vMaska } from "maska/vue"
 
 const self = ref(null);
 
