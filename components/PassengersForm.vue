@@ -1,7 +1,8 @@
 <template>
 <div
+    ref="self"
     v-if="selectedSeats.length > 0 && seatsConfirmed"
-    class="min-h-screen bg-gray-100 p-5 font-sans"
+    class="min-h-screen p-5 font-sans"
   >
     <div class="max-w-md mx-auto">
       <div
@@ -39,6 +40,7 @@
                 type="text"
                 v-model="passengers[seat]"
                 placeholder="000.000.000-00"
+                v-maska data-maska="###.###.###-##"
                 class="p-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none transition-all text-gray-700"
                 required
               />
@@ -68,6 +70,15 @@
   </template>
 
   <script setup>
+  import { ref, onMounted } from 'vue';
+  import { vMaska } from "maska"
+
+const self = ref(null);
+
+onMounted(() => {
+  self.value?.scrollIntoView({ behavior: 'smooth' });
+});
+
   const {
   origemSelecionada,
   isInSearchMode,

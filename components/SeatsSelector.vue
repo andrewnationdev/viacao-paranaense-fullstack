@@ -1,5 +1,6 @@
 <template>
  <div
+    ref="self"
     v-if="id_selecionado && !seatsConfirmed"
     class="min-h-screen bg-gray-100 p-5 font-sans"
   >
@@ -97,7 +98,13 @@
 </template>
 
  <script setup>
- import { ref, reactive, watch } from 'vue';
+ import { ref, reactive, onMounted, watch } from 'vue';
+
+const self = ref(null);
+
+onMounted(() => {
+  self.value?.scrollIntoView({ behavior: 'smooth' });
+});
 
 const {
   origemSelecionada,

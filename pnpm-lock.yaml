@@ -20,6 +20,9 @@ dependencies:
   lucide-vue-next:
     specifier: ^0.563.0
     version: 0.563.0(vue@3.5.27)
+  maska:
+    specifier: ^3.2.0
+    version: 3.2.0
   nuxt:
     specifier: ^3.21.0
     version: 3.21.0(@vue/compiler-sfc@3.5.27)(vite@7.3.1)
@@ -4430,6 +4433,10 @@ packages:
       '@babel/parser': 7.28.6
       '@babel/types': 7.28.6
       source-map-js: 1.2.1
+    dev: false
+
+  /maska@3.2.0:
+    resolution: {integrity: sha512-zSmSgs5/q9vMSmrdZT3rKOv9uLznNWR/niuuAdBZDTvB3SMKOX9vhMtDijFyExz+B4UClu2rvksylUh/ea1bLA==}
     dev: false
 
   /math-intrinsics@1.1.0:

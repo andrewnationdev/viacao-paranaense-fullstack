@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-6 max-w-xl mx-auto">
+  <div ref="self" class="space-y-6 max-w-xl mx-auto">
     <div v-if="viagensFiltradas.length > 0">
       <RoutesCards v-for="viagem in viagensFiltradas" :key="viagem.id" :cities_array="cities_array" :viagem="viagem" />
     </div>
@@ -7,7 +7,26 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+
+const self = ref(null);
+
+onMounted(() => {
+  self.value?.scrollIntoView({ behavior: 'smooth' });
+});
+
 const { data } = defineProps(['cidades', 'viagens', 'cities_array']);
+
+const handleSelectDestination = (origin, destination) => {
+    origemSelecionada.value = origin;
+    destinoSelecionado.value = destination;
+    
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+        });
+    }
 
 const {
   origemSelecionada,
