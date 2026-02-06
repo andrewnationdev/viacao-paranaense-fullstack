@@ -95,14 +95,34 @@ onMounted(() => {
 
 const finalizarReserva = async () => {
     const payload = {
-      viagemId: id_selecionado.value,
-      data: dataSelecionada.value,
-      reservas: Object.entries(passengers).map(([seat, cpf]) => ({
-        poltrona: Number(seat),
-        documento: cpf,
-      })),
-    };
-    console.log('Enviando para a API:', payload);
-    alert('Reserva enviada com sucesso!');
+      id_origin: origemSelecionada.value,
+      id_destination: destinoSelecionado.value,
+      date: dataSelecionada.value,
+      departure_time: '',
+      passengers: Object.entries(passengers).map(([seat, cpf]) => ({
+        seat_number: Number(seat),
+        cpf: cpf,
+      }))
+    }
+
+    window.open("https://www.bing.com/ck/a?!&&p=9699ca9a7a33f3573c46968fdc4bc8f97f908a56e9277957411e40f7646268d2JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3aea7f-0a32-62cd-180b-fc8b0b056369&u=a1aHR0cHM6Ly9udWJhbmsuY29tLmJyL251L2NvbnRhP21zb2NraWQ9MGQzYWVhN2YwYTMyNjJjZDE4MGJmYzhiMGIwNTYzNjk");
+    
+    try {
+      const tickets_req = await fetch('/api/handle_ticket', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await tickets_req.json();
+      if(data.status.code == 200){
+        alert('Reserva enviada com sucesso!');
+      } else {
+        alert(data.status.message);
+      }
+    } catch(err){
+      alert(err)
+    }
   };
   </script>

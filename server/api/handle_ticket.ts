@@ -1,23 +1,43 @@
-export default defineEventHandler((event) => {
+import { createHash } from 'crypto'
+
+export default defineEventHandler(async (event) => {
+    const body = await readBody(event)
+    const { id_origin, id_destination, date, passengers } = body
+
+    if (!id_origin || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
+        throw createError({
+            statusCode: 400,
+            statusMessage: 'Parâmetros inválidos.',
+        })
+    }
+
+    const generateShaCode = (dataString) => {
+        return createHash('sha256').update(dataString + Date.now()).digest('hex')
+    }
+
+    const data = passengers.map((p) => {
+        const seed = `${id_origin}-${id_destination}-${p.cpf}-${p.seat_number}-${date}`
+        
+        return {
+            id_service: Math.floor(Math.random() * 10000),
+            id_ticket: Math.floor(Math.random() * 999999),
+            id_origin,
+            id_destination,
+            departure_time: body.departure_time || '',
+            type: 'Horário Ordinário',
+            bus_type: 'Convencional',
+            seat_number: p.seat_number,
+            departure_date: date,
+            cpf: p.cpf,
+            sha_code: generateShaCode(seed)
+        }
+    })
+
     return {
         status: {
             code: 200,
-            message: ""
+            message: "Sucesso"
         },
-        data: [
-            {
-                id_service: 0,
-                id_ticket: 0,
-                id_origin: 1,
-                id_destination: 2,
-                departure_time: '',
-                type: 'Horário Ordinário',
-                bus_type: 'Convencional',
-                seat_number: 28,
-                departure_date: '06/01/2026',
-                cpf: '',
-                sha_code: ''
-            }
-        ]
+        data
     }
 })
