@@ -8,7 +8,7 @@
     <SeatsSelector/>
   <PassengersForm/>
   <PrintTickets v-if="tickets.length > 0"/>
-  <SectionMainDestinations v-if="mainDestinations && citiesMap" :cities="mainDestinations" :cities_array='citiesMap'/>
+  <SectionMainDestinations v-if="mainDestinations && citiesMap" :cities="cidades" :cities_array='citiesMap'/>
   <SectionAbout/>
   </div>
   <Footer/>

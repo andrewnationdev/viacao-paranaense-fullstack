@@ -1,6 +1,6 @@
 <template>
  <div
-    ref="self"
+    ref="seats_selec"
     v-if="id_selecionado && !seatsConfirmed"
     class="min-h-screen bg-gray-100 p-5 font-sans"
   >
@@ -100,10 +100,10 @@
  <script setup>
  import { ref, reactive, onMounted, watch } from 'vue';
 
-const self = ref(null);
+const seats_selec = ref(null);
 
 onMounted(() => {
-  self.value?.scrollIntoView({ behavior: 'smooth' });
+  seats_selec.value?.scrollIntoView({ behavior: 'smooth' });
 });
 
 const {

@@ -1,6 +1,6 @@
 <template>
 <div
-    ref="self"
+    ref="pass_form"
     v-if="selectedSeats.length > 0 && seatsConfirmed"
     class="min-h-screen p-5 font-sans"
   >
@@ -73,10 +73,10 @@
   import { ref, onMounted } from 'vue';
   import { vMaska } from "maska/vue"
 
-const self = ref(null);
+const pass_form = ref(null);
 
 onMounted(() => {
-  self.value?.scrollIntoView({ behavior: 'smooth' });
+  pass_form.value?.scrollIntoView({ behavior: 'smooth' });
 });
 
   const {
@@ -90,7 +90,8 @@ onMounted(() => {
   selectedSeats,
   seatsConfirmed,
   passengers,
-  ticketPrice
+  ticketPrice,
+  tickets
 } = useBusStore();
 
 const finalizarReserva = async () => {
@@ -118,6 +119,7 @@ const finalizarReserva = async () => {
       const data = await tickets_req.json();
       if(data.status.code == 200){
         alert('Reserva enviada com sucesso!');
+        tickets.value = data.data;
       } else {
         alert(data.status.message);
       }
