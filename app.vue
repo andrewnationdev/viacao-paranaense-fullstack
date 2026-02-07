@@ -7,6 +7,7 @@
     <NotFound v-else/>
     <SeatsSelector/>
   <PassengersForm/>
+  <PrintTickets v-if="tickets.length > 0"/>
   <SectionMainDestinations v-if="mainDestinations && citiesMap" :cities="mainDestinations" :cities_array='citiesMap'/>
   <SectionAbout/>
   </div>
@@ -23,6 +24,7 @@ const {
   isInSearchMode,
   dataSelecionada,
   id_selecionado,
+  tickets,
   citiesData,
   routesData,
   destinoSelecionado,

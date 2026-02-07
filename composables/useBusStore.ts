@@ -14,7 +14,8 @@ export const useBusStore = () => {
   const ticketPrice = useState('ticketPrice', () => 0);
   const selectedSeats = useState('selectedSeats', () => [])
   const seatsConfirmed = useState('seats_confirm', () => false);
-
+  const tickets = useState('tickets', ()=> [])
+  
   return {
     origemSelecionada,
     destinoSelecionado,
@@ -22,6 +23,7 @@ export const useBusStore = () => {
     isInSearchMode,
     dataSelecionada,
     citiesData,
+    tickets,
     routesData,
     ticketPrice,
     selectedSeats,
