@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
             id_ticket: Math.floor(Math.random() * 999999),
             id_origin,
             id_destination,
-            departure_time: body.departure_time || '',
+            departure_time: body.departure_time || '23:59',
             type: 'Horário Ordinário',
             bus_type: 'Convencional',
             seat_number: p.seat_number,
