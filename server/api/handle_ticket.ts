@@ -2,7 +2,7 @@ import { createHash } from 'crypto'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
-    const { id_origin, id_destination, date, passengers } = body
+    const { id_origin, price, id_destination, date, passengers } = body
 
     if (!id_origin || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
         throw createError({
@@ -29,6 +29,7 @@ export default defineEventHandler(async (event) => {
             seat_number: p.seat_number,
             departure_date: date,
             cpf: p.cpf,
+            price: price,
             sha_code: generateShaCode(seed)
         }
     })

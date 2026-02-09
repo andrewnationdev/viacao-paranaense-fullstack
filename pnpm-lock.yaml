@@ -29,6 +29,9 @@ dependencies:
   nuxt:
     specifier: ^3.21.0
     version: 3.21.0(@vue/compiler-sfc@3.5.27)(vite@7.3.1)
+  qrcode.vue:
+    specifier: ^3.8.0
+    version: 3.8.0(vue@3.5.27)
   vue:
     specifier: ^3.5.27
     version: 3.5.27
@@ -5652,6 +5655,14 @@ packages:
 
   /protocols@2.0.2:
     resolution: {integrity: sha512-hHVTzba3wboROl0/aWRRG9dMytgH6ow//STBZh43l/wQgmMhYhOFi0EHWAPtoCz9IAUymsyP0TSBHkhgMEGNnQ==}
+    dev: false
+
+  /qrcode.vue@3.8.0(vue@3.5.27):
+    resolution: {integrity: sha512-+XKbSKvQu158zlHsJm+HObGUQM3Q+9Oq6yb2op/6lMM2gwOiiG9uIhujvrSV5UoTjrzR0BcNxCdW2kk7KE4NEg==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.5.27
     dev: false
 
   /quansync@0.2.11:

@@ -18,6 +18,8 @@
         <span>Total a Pagar:<strong>{{''}}</strong></span>
         <hr/>
         <span>CPF Passageiro:<strong>{{ticket.cpf}}</strong></span>
+        <hr/>
+        <QRCode :ticket-data="ticket"/>
     </div>
 </div>
    <button

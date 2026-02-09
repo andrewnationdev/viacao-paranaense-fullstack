@@ -100,6 +100,7 @@ const finalizarReserva = async () => {
       id_destination: destinoSelecionado.value,
       date: dataSelecionada.value,
       departure_time: '',
+      price: ticketPrice.value / passengers.length,
       passengers: Object.entries(passengers).map(([seat, cpf]) => ({
         seat_number: Number(seat),
         cpf: cpf,
