@@ -4,7 +4,10 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const { id_origin, price, id_destination, date, passengers } = body
 
-    if (!id_origin || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
+    const BOARDING_FEE_REDUCTION = 8;
+    const TOLL_RATE = 0.035;
+
+    if (!id_origin || !price || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
         throw createError({
             statusCode: 400,
             statusMessage: 'Parâmetros inválidos.',
@@ -14,6 +17,14 @@ export default defineEventHandler(async (event) => {
     const generateShaCode = (dataString) => {
         return createHash('sha256').update(dataString + Date.now()).digest('hex')
     }
+
+    const calculateBoardingFee = (price: number): number => {
+        return price > BOARDING_FEE_REDUCTION ? price - BOARDING_FEE_REDUCTION : 0;
+    };
+
+    const calculateToll = (price: number): number => {
+        return price * TOLL_RATE;
+    };
 
     const data = passengers.map((p) => {
         const seed = `${id_origin}-${id_destination}-${p.cpf}-${p.seat_number}-${date}`
@@ -30,6 +41,8 @@ export default defineEventHandler(async (event) => {
             departure_date: date,
             cpf: p.cpf,
             price: price,
+            boarding_fee: calculateBoardingFee(price),
+            toll: calculateToll(price),
             sha_code: generateShaCode(seed)
         }
     })

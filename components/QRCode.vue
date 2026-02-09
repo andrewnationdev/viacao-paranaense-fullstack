@@ -8,6 +8,6 @@ const data = defineProps(['ticket-data'])
 
 <template>
 
-  <qrcode-vue :value="ticket-data" :size="200" level="H" />
+  <qrcode-vue :value="ticket-data" :background="f5f5f4" :size="150" level="H" />
 
 </template>
