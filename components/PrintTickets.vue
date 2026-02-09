@@ -9,7 +9,7 @@
         <span>Data : <strong>{{ticket.departure_date.replaceAll('-', '/')}}</strong> | Horário: <strong>{{ticket.departure_time}}</strong> | Poltrona: <strong>{{ticket.seat_number}}</strong></span>
         <span>Bilhete: <strong>{{ticket.id_ticket}}</strong> | Tipo: <strong>{{ticket.bus_type}}</strong></span>
         <span>Tipo Viagem: <strong>{{ticket.type}}</strong></span>
-        <span>Linha: <strong>{{''}}</strong></span>
+        <span>Linha: <strong>{{linha.itinerary}}</strong></span>
         <hr/>
         <span>Tarifa: <strong>{{ticket.price}}</strong></span>
         <span>Pedágio: <strong></strong>{{tickets.toll}}</span>
@@ -50,4 +50,12 @@ const {
   selectedSeats,
   passengers,
 } = useBusStore();
+
+const {data:linha} = useFetch('/api/get_itinerario', {
+  method: 'POST',
+  body: {
+    id_origin: origemSelecionada.value,
+    id_destination: destinoSelecionado.value,
+  }
+});
 </script>
