@@ -11,10 +11,10 @@
         <span>Tipo Viagem: <strong>{{ticket.type}}</strong></span>
         <span>Linha: <strong>{{linha.itinerary}}</strong></span>
         <hr/>
-        <span>Tarifa: <strong>{{ticket.price}}</strong></span>
-        <span>Pedágio: <strong></strong>{{tickets.toll}}</span>
-        <span>Taxa de Embarque: <strong>{{tickets.boarding_fee}}</strong></span>
-        <span>Total a Pagar: <strong>{{ticket.price}}</strong></span>
+        <span>Tarifa: <strong>{{formatCurrency(ticket.price)}}</strong></span>
+        <span>Pedágio: <strong>{{formatCurrency(ticket.toll)}}</strong></span>
+        <span>Taxa de Embarque: <strong>{{formatCurrency(ticket.boarding_fee)}}</strong></span>
+        <span>Total a Pagar: <strong>{{formatCurrency(ticket.price)}}</strong></span>
         <hr/>
         <span>CPF Passageiro: <strong>{{ticket.cpf}}</strong></span>
         <hr/>
@@ -52,8 +52,7 @@ const {
 } = useBusStore();
 
 const {data:linha} = useFetch('/api/get_itinerario', {
-  method: 'POST',
-  body: {
+  query: {
     id_origin: origemSelecionada.value,
     id_destination: destinoSelecionado.value,
   }

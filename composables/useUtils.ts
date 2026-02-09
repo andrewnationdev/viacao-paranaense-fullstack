@@ -8,6 +8,5 @@ export const formatCurrency = (value: string | number | undefined | null): strin
 
     let val = typeof value === 'number' ? value.toString() : value;
 
-    return `R$ ${val.replaceAll('.', ',')}`;
-
+    return `R$ ${parseInt(val).toFixed(2).replaceAll('.', ',')}`;
 };
