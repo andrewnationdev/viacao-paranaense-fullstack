@@ -41,6 +41,12 @@ import { Printer } from 'lucide-vue-next';
 
 const props = defineProps(['cities_array']);
 const { tickets, origemSelecionada, destinoSelecionado } = useBusStore();
+const {data:linha} = useFetch('/api/get_itinerario', {
+  query: {
+    id_origin: origemSelecionada.value,
+    id_destination: destinoSelecionado.value,
+  }
+});
 
 async function downloadPDF(index) {
   if (process.client) {
