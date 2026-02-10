@@ -2,7 +2,7 @@
 <div
     ref="pass_form"
     v-if="selectedSeats.length > 0 && seatsConfirmed"
-    class="min-h-screen p-5 font-sans"
+    class="p-5 font-sans"
   >
     <div class="max-w-md mx-auto">
       <div

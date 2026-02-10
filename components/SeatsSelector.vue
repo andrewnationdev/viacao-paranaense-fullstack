@@ -2,7 +2,7 @@
  <div
     ref="seats_selec"
     v-if="id_selecionado && !seatsConfirmed"
-    class="min-h-screen bg-gray-100 p-5 font-sans"
+    class="bg-gray-100 p-5 font-sans"
   >
     <div class="max-w-md mx-auto mb-6 text-center">
       <h2 class="text-xl font-bold text-gray-800">Selecione suas Poltronas</h2>
