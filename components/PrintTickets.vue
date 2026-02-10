@@ -4,14 +4,24 @@
       <div v-for="(ticket, index) in tickets" :key="ticket.id_ticket" class="mb-8 border-b pb-4">
         
         <div :id="'ticket-' + index" class="bg-stone-100 text-slate-700 w-full mb-2 flex flex-col gap-2 px-4 py-8 text-xs">
-           <h1 class="text-center text-xl m-4 font-bold">VIAÇÃO PARANAENSE</h1>
-           <span>Origem: <strong>{{cities_array[ticket.id_origin]?.toUpperCase()}}</strong></span>
-           <span>Destino: <strong>{{cities_array[ticket.id_destination]?.toUpperCase()}}</strong></span>
-           <hr/>
-           <span>Bilhete: <strong>{{ticket.id_ticket}}</strong> | Poltrona: <strong>{{ticket.seat_number}}</strong></span>
-           <div class="mx-auto my-4">
-             <QRCode :ticket-data="ticket"/>
-           </div>
+           <span class="text-center text-xl m-4 font-bold">VIAÇÃO PARANAENSE</span>
+        <span>Origem: <strong>{{cities_array[ticket.id_origin].toUpperCase()}}</strong></span>
+        <span>Destino: <strong>{{cities_array[ticket.id_destination].toUpperCase()}}</strong></span>
+        <span>Data : <strong>{{ticket.departure_date.replaceAll('-', '/')}}</strong> | Horário: <strong>{{ticket.departure_time}}</strong> | Poltrona: <strong>{{ticket.seat_number}}</strong></span>
+        <span>Bilhete: <strong>{{ticket.id_ticket}}</strong> | Tipo: <strong>{{ticket.bus_type}}</strong></span>
+        <span>Tipo Viagem: <strong>{{ticket.type}}</strong></span>
+        <span>Linha: <strong>{{linha.itinerary}}</strong></span>
+        <hr/>
+        <span>Tarifa: <strong>{{formatCurrency(ticket.price)}}</strong></span>
+        <span>Pedágio: <strong>{{formatCurrency(ticket.toll)}}</strong></span>
+        <span>Taxa de Embarque: <strong>{{formatCurrency(ticket.boarding_fee)}}</strong></span>
+        <span>Total a Pagar: <strong>{{formatCurrency(ticket.price)}}</strong></span>
+        <hr/>
+        <span>CPF Passageiro: <strong>{{ticket.cpf}}</strong></span>
+        <hr/>
+        <div class="mx-auto my-4">
+          <QRCode :ticket-data="ticket"/>
+        </div>
         </div>
 
         <button
