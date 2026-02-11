@@ -32,21 +32,59 @@
           Imprimir Bilhete {{ ticket.seat_number }}
         </button>
       </div>
+      <button
+          class="mx-auto flex justify-around items-center gap-4 p-4 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
+          @click="resetAll()"
+        >
+          <Tickets />
+          Comprar Outra Passagem
+        </button>
     </div>
   </ClientOnly>
 </template>
 
 <script setup>
-import { Printer } from 'lucide-vue-next';
+import { Printer, Tickets } from 'lucide-vue-next';
 
 const props = defineProps(['cities_array']);
-const { tickets, origemSelecionada, destinoSelecionado } = useBusStore();
+
+  const {
+  origemSelecionada,
+  isInSearchMode,
+  dataSelecionada,
+  id_selecionado,
+  destinoSelecionado,
+  citiesData,
+  routesData,
+  selectedSeats,
+  seatsConfirmed,
+  passengers,
+  ticketPrice,
+  tickets
+} = useBusStore();
+
 const {data:linha} = useFetch('/api/get_itinerario', {
   query: {
     id_origin: origemSelecionada.value,
     id_destination: destinoSelecionado.value,
   }
 });
+
+function resetAll(){
+  tickets.value = [];
+  origemSelecionada.value = "";
+  destinoSelecionado.value = "";
+  id_selecionado.value = "";
+  passengers.value = [];
+  selectedSeats.value = [];
+  seatsConfirmed = false;
+
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
 
 async function downloadPDF(index) {
   if (process.client) {
