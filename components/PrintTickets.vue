@@ -81,6 +81,7 @@ function resetAll(){
   isInSearchMode.value = false;
   unitPrice.value = 0.0;
   ticketPrice.value = 0.0;
+  paymentConfirmed.value = false;
 
   window.scroll({
     top: 0,

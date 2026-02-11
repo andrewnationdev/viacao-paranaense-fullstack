@@ -98,7 +98,7 @@
 </template>
 
 <script setup>
- import { ref, reactive, onMounted, watch } from 'vue';
+ import { ref, reactive, computed, onMounted, watch } from 'vue';
 
 const seats_selec = ref(null);
 
@@ -121,15 +121,19 @@ const {
   unitPrice
 } = useBusStore();
 
-const {data:seats} = useFetch('/api/get_assentos_disponiveis', {
+const { data: seats, pending } = useFetch('/api/get_assentos_disponiveis', {
   query: {
-    id_origin: origemSelecionada.value,
-    id_destination: destinoSelecionado.value,
-    date: dataSelecionada.value
+    id_origin: () => origemSelecionada.value,
+    id_destination: () => destinoSelecionado.value,
+    date: () => dataSelecionada.value
   }
 })
 
-const occupiedSeats = computed(() => seats.value?.occupied || []);
+const occupiedSeats = computed(() => {
+  return seats.value?.data?.available_seats
+    ?.filter(s => s.isOccupied)
+    .map(s => s.id) || [];
+});
 
 const toggleSeat = (num) => {
   if (occupiedSeats.value.includes(num)) return;

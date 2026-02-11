@@ -1,7 +1,7 @@
 <template>
 <div
     ref="pass_form"
-    v-if="selectedSeats.length > 0 && seatsConfirmed"
+    v-if="selectedSeats.length > 0 && seatsConfirmed && !paymentConfirmed"
     class="p-5 font-sans"
   >
     <div class="max-w-md mx-auto">
@@ -91,7 +91,8 @@ onMounted(() => {
   seatsConfirmed,
   passengers,
   ticketPrice,
-  tickets
+  tickets,
+  paymentConfirmed
 } = useBusStore();
 
 const finalizarReserva = async () => {
@@ -121,6 +122,7 @@ const finalizarReserva = async () => {
       if(data.status.code == 200){
         alert('Reserva enviada com sucesso!');
         tickets.value = data.data;
+        paymentConfirmed.value = true;
       } else {
         alert(data.status.message);
       }
