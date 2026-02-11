@@ -117,7 +117,8 @@ const {
   selectedSeats,
   seatsConfirmed,
   passengers,
-  ticketPrice
+  ticketPrice,
+  unitPrice
 } = useBusStore();
 
 const {data:seats} = useFetch('/api/get_assentos_disponiveis', {
@@ -128,10 +129,10 @@ const {data:seats} = useFetch('/api/get_assentos_disponiveis', {
   }
 })
 
-const occupiedSeats = computed(() => seatsData.value?.occupied || []);
+const occupiedSeats = computed(() => seats.value?.occupied || []);
 
 const toggleSeat = (num) => {
-  if (occupiedSeats.includes(num)) return;
+  if (occupiedSeats.value.includes(num)) return;
 
   const index = selectedSeats.value.indexOf(num);
   if (index > -1) {
@@ -143,14 +144,14 @@ const toggleSeat = (num) => {
 
 const confirmSeats = () => {
   seatsConfirmed.value = true;
-  ticketPrice.value = ticketPrice.value * selectedSeats.value.length;
- console.log(ticketPrice.value)
-  console.log(selectedSeats.value.length)
-
+  ticketPrice.value = unitPrice.value * selectedSeats.value.length;
+  
+  console.log(ticketPrice.value);
+  console.log(selectedSeats.value.length);
 };
 
 const getSeatClass = (num) => {
-  if (occupiedSeats.includes(num)) {
+  if (occupiedSeats.value.includes(num)) {
     return 'bg-gray-300 border-gray-400 text-gray-100 cursor-not-allowed';
   }
   if (selectedSeats.value.includes(num)) {

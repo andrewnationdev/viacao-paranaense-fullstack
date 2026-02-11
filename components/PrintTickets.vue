@@ -77,7 +77,10 @@ function resetAll(){
   id_selecionado.value = "";
   passengers.value = [];
   selectedSeats.value = [];
-  seatsConfirmed = false;
+  seatsConfirmed.value = false;
+  isInSearchMode.value = false;
+  unitPrice.value = 0.0;
+  ticketPrice.value = 0.0;
 
   window.scroll({
     top: 0,

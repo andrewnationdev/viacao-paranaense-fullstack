@@ -79,10 +79,12 @@ const {
     ticketPrice,
     selectedSeats,
     passengers,
+    unitPrice
   } = useBusStore();
 
     const selectTrip = (id, price) => {
     id_selecionado.value = id;
     ticketPrice.value = parseFloat(price);
+    unitPrice.value = parseFloat(price);
   };
 </script>

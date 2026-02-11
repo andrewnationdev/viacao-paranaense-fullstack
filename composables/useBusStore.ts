@@ -14,7 +14,8 @@ export const useBusStore = () => {
   const ticketPrice = useState('ticketPrice', () => 0);
   const selectedSeats = useState('selectedSeats', () => [])
   const seatsConfirmed = useState('seats_confirm', () => false);
-  const tickets = useState('tickets', ()=> [])
+  const tickets = useState('tickets', ()=> []);
+  const unitPrice = useState('unitPrice', () => 0.0);
   
   return {
     origemSelecionada,
@@ -28,6 +29,7 @@ export const useBusStore = () => {
     ticketPrice,
     selectedSeats,
     seatsConfirmed,
-    passengers
+    passengers,
+    unitPrice
   };
 };

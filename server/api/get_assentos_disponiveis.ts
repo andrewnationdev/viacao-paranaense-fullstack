@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
-    const body = await readBody(event)
-    const { id_origin, id_destination, date } = body
+    const query = await getQuery(event)
+    const { id_origin, id_destination, date } = query
 
     function handleFetchAvailableSeats() {
         let number_of_occupied = Math.floor(Math.random() * 42) + 1;
