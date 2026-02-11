@@ -97,7 +97,7 @@
   </div>
 </template>
 
- <script setup>
+<script setup>
  import { ref, reactive, onMounted, watch } from 'vue';
 
 const seats_selec = ref(null);
@@ -120,7 +120,15 @@ const {
   ticketPrice
 } = useBusStore();
 
-const occupiedSeats = [5, 6, 12, 19, 20, 33];
+const {data:seats} = useFetch('/api/get_assentos_disponiveis', {
+  query: {
+    id_origin: origemSelecionada.value,
+    id_destination: destinoSelecionado.value,
+    date: dataSelecionada.value
+  }
+})
+
+const occupiedSeats = computed(() => seatsData.value?.occupied || []);
 
 const toggleSeat = (num) => {
   if (occupiedSeats.includes(num)) return;
