@@ -1,42 +1,23 @@
-# Nuxt 3 Minimal Starter
+# VIAÇÃO PARANAENSE FULLSTACK
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Projeto fullstack com Nuxt para uma empresa fictícia de transporte intermunicipal e interestadual.
 
-## Setup
+## INTRODUÇÃO
 
-Make sure to install the dependencies:
+## USO E INSTALAÇÃO
 
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
 pnpm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
 npm run dev
-```
 
-## Production
+## TECNOLOGIAS EMPREGADAS
 
-Build the application for production:
+## FUNCIONALIDADES IMPLEMENTADAS
 
-```bash
-npm run build
-```
+## API
 
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### GET_ASSENTOS_DISPONIVEIS
+### GET_CIDADES
+### GET_ITINERARIO
+### GET_MAIN_DESTINATIONS
+### GET_VIAGENS
+### HANDLE_TICKET
