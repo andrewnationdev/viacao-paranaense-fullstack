@@ -6,8 +6,7 @@ Projeto fullstack com Nuxt para uma empresa fictícia de transporte intermunicip
 
 ## USO E INSTALAÇÃO
 
-pnpm install
-npm run dev
+`pnpm install && npm run dev`
 
 ## TECNOLOGIAS EMPREGADAS
 
