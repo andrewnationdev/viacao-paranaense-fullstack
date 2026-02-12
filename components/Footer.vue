@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full p-8 flex-col items-center bg-teal-500">
+    <div class="w-full p-8 flex-col items-center bg-blue-800">
         <h1 class="font-bold text-xl my-2 text-center text-teal-200">VIAÇÃO PARANAENSE</h1>
         <div class="flex-col text-white">
             <p>(42) 98765-4321</p>
@@ -18,7 +18,7 @@
         </div>
         <div class="flex flex-col items-center">
             <span class="text-white text-center">© {{ new Date().getFullYear() }} - Viação Paranaense</span>
-            <span class="text-white text-center"> Desenvolvido por <a href="">AndrewNation</a></span>
+            <span class="text-white text-center"> Desenvolvido por <a class="hover:underline" href="https://andrewnationdev.vercel.app/">AndrewNation</a></span>
         </div>
     </div>
 </template>

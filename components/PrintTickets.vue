@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div class="max-w-md mx-auto bg-white p-4 rounded-2xl shadow-xl border-l-4 border-teal-500 mb-4">
+    <div class="max-w-md mx-auto bg-white p-4 rounded-2xl shadow-xl border-l-4 border-green-700 mb-4">
       <div v-for="(ticket, index) in tickets" :key="ticket.id_ticket" class="mb-8 border-b pb-4">
         
         <div :id="'ticket-' + index" class="bg-stone-100 text-slate-700 w-full mb-2 flex flex-col gap-2 px-4 py-8 text-xs">
@@ -25,7 +25,7 @@
         </div>
 
         <button
-          class="max-w-[80%] mx-auto flex justify-around items-center gap-4 p-4 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
+          class="max-w-[80%] mx-auto flex justify-around items-center gap-4 p-4 bg-green-500 hover:bg-green-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
           @click="downloadPDF(index)"
         >
           <Printer />
@@ -33,7 +33,7 @@
         </button>
       </div>
       <button
-          class="mx-auto flex justify-around items-center gap-4 p-4 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
+          class="mx-auto flex justify-around items-center gap-4 p-4 bg-green-500 hover:bg-green-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
           @click="resetAll()"
         >
           <Tickets />

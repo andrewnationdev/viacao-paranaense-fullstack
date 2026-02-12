@@ -2,7 +2,7 @@
   <div class="flex justify-center items-center mb-10">
     <form
       @submit.prevent="handleSearch"
-      class="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-teal-800 w-full max-w-md"
+      class="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-blue-800 w-full max-w-md"
     >
       <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
         Encontre sua Viagem
@@ -70,7 +70,7 @@
 
       <button
         type="submit"
-        class="w-full p-4 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
+        class="w-full p-4 bg-green-700 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
       >
         Buscar Passagens
       </button>
