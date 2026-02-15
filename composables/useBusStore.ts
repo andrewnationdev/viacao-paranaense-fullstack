@@ -17,13 +17,15 @@ export const useBusStore = () => {
   const tickets = useState('tickets', ()=> []);
   const unitPrice = useState('unitPrice', () => 0.0);
   const paymentConfirmed = useState('paymentConfirmed', () => false)
-  
+  const partida = useState('partida', () =>  "");
+
   return {
     origemSelecionada,
     destinoSelecionado,
     id_selecionado,
     isInSearchMode,
     dataSelecionada,
+    partida,
     citiesData,
     tickets,
     routesData,

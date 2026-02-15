@@ -92,6 +92,7 @@ onMounted(() => {
   passengers,
   ticketPrice,
   tickets,
+  partida,
   paymentConfirmed
 } = useBusStore();
 
@@ -100,7 +101,7 @@ const finalizarReserva = async () => {
       id_origin: origemSelecionada.value,
       id_destination: destinoSelecionado.value,
       date: dataSelecionada.value,
-      departure_time: '',
+      departure_time: partida.value,
       price: ticketPrice.value / Object.entries(passengers).length,
       passengers: Object.entries(passengers).map(([seat, cpf]) => ({
         seat_number: Number(seat),

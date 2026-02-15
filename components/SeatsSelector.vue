@@ -5,6 +5,11 @@
     class="bg-gray-100 p-5 font-sans"
   >
     <div class="max-w-md mx-auto mb-6 text-center">
+    <div class="m-4 bg-red-600 rounded-[1.5rem] p-5"
+    v-if="seats.data.message == 'Não há assentos disponíveis nesta data'"
+    >
+      <span class="text-white">Não há assentos disponíveis nesta data</span>
+    </div>
       <h2 class="text-xl font-bold text-gray-800">Selecione suas Poltronas</h2>
       <p class="text-sm text-gray-500 mt-1">
         Selecionadas:
@@ -19,6 +24,7 @@
     </div>
 
     <div
+      v-if="seats.data.message != 'Não há assentos disponíveis nesta data'"
       class="max-w-sm mx-auto bg-white p-6 rounded-[2.5rem] shadow-2xl border-x-4 border-gray-200 relative"
     >
       <div
