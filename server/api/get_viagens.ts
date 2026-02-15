@@ -173,5 +173,104 @@ export default defineEventHandler((event) => {
       price: 310.0,
       departures: [{ date: '', time: '18:00' }],
     }, // Rio -> Curitiba
+
+    {
+      id: 21,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h30min',
+      price: 48.5,
+      departures: [{ date: '', time: '07:30' }],
+    }, // PG -> Curitiba,
+    {
+      id: 22,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h00min',
+      price: 48.5,
+      departures: [{ date: '', time: '09:00' }],
+    }, // PG -> Curitiba,
+    {
+      id: 23,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h00min',
+      price: 48.5,
+      departures: [{ date: '', time: '10:00' }],
+    }, // PG -> Curitiba,
+    {
+      id: 24,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h00min',
+      price: 48.5,
+      departures: [{ date: '', time: '11:00' }],
+    }, // PG -> Curitiba
+
+    {
+      id: 25,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h20min',
+      price: 48.5,
+      departures: [{ date: '', time: '12:00' }],
+    }, // PG -> Curitiba,
+    {
+      id: 26,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h20min',
+      price: 48.5,
+      departures: [{ date: '', time: '13:30' }],
+    }, // PG -> Curitiba,
+    {
+      id: 27,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h20min',
+      price: 48.5,
+      departures: [{ date: '', time: '14:00' }],
+    }, // PG -> Curitiba,
+    {
+      id: 28,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h00min',
+      price: 48.5,
+      departures: [{ date: '', time: '15:35' }],
+    }, // PG -> Curitiba
+
+    {
+      id: 29,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h30min',
+      price: 48.5,
+      departures: [{ date: '', time: '18:00' }],
+    }, // PG -> Curitiba,
+    {
+      id: 30,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h20min',
+      price: 48.5,
+      departures: [{ date: '', time: '19:20' }],
+    }, // PG -> Curitiba,
+    {
+      id: 31,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '2h20min',
+      price: 48.5,
+      departures: [{ date: '', time: '21:30' }],
+    }, // PG -> Curitiba,
+    {
+      id: 32,
+      id_origin: 1,
+      id_destination: 2,
+      duration: '1h50min',
+      price: 48.5,
+      departures: [{ date: '', time: '23:59' }],
+    }, // PG -> Curitiba
   ];
 });
