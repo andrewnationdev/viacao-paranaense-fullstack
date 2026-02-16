@@ -2,19 +2,19 @@ import { createHash } from 'crypto'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
-    const { id_origin, price, id_destination, date, passengers } = body
+    const { id_origin, price, service, id_destination, date, passengers } = body
 
     const BOARDING_FEE_REDUCTION = 8;
     const TOLL_RATE = 0.035;
 
-    if (!id_origin || !price || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
+    if (!id_origin || !price || !service || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
         throw createError({
             statusCode: 400,
             statusMessage: 'Parâmetros inválidos.',
         })
     }
 
-    const generateShaCode = (dataString) => {
+    const generateShaCode = (dataString: string) => {
         return createHash('sha256').update(dataString + Date.now()).digest('hex')
     }
 
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
             id_destination,
             departure_time: body.departure_time || '23:59',
             type: 'Horário Ordinário',
-            bus_type: 'Convencional',
+            bus_type: body.service,
             seat_number: p.seat_number,
             departure_date: date,
             cpf: p.cpf,

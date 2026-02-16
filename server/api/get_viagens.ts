@@ -7,6 +7,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '1h50min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '06:00' }],
     }, // PG -> Curitiba
     {
@@ -15,6 +16,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h05min',
       price: 52.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '14:30' }],
     }, // PG -> Curitiba
     {
@@ -23,6 +25,7 @@ export default defineEventHandler((event) => {
       id_destination: 7,
       duration: '7h30min',
       price: 180.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '22:00' }],
     }, // PG -> Campinas
     {
@@ -31,6 +34,7 @@ export default defineEventHandler((event) => {
       id_destination: 3,
       duration: '2h40min',
       price: 65.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '08:15' }],
     }, // PG -> Telêmaco Borba
     {
@@ -39,6 +43,7 @@ export default defineEventHandler((event) => {
       id_destination: 8,
       duration: '4h30min',
       price: 110.0,
+      service: 'LEITO CAMA',
       departures: [{ date: '', time: '13:00' }],
     }, // PG -> Maringá
 
@@ -49,6 +54,7 @@ export default defineEventHandler((event) => {
       id_destination: 1,
       duration: '1h55min',
       price: 48.5,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '10:00' }],
     }, // Curitiba -> PG
     {
@@ -57,6 +63,7 @@ export default defineEventHandler((event) => {
       id_destination: 4,
       duration: '6h15min',
       price: 120.0,
+      service: 'LEITO CAMA',
       departures: [{ date: '', time: '23:59' }],
     }, // Curitiba -> SP (Tietê)
     {
@@ -73,6 +80,7 @@ export default defineEventHandler((event) => {
       id_destination: 8,
       duration: '6h45min',
       price: 145.0,
+      service: 'SEMI LEITO',
       departures: [{ date: '', time: '11:15' }],
     }, // Curitiba -> Maringá
 
@@ -83,6 +91,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '6h00min',
       price: 125.0,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '07:30' }],
     }, // SP (Tietê) -> Curitiba
     {
@@ -91,6 +100,7 @@ export default defineEventHandler((event) => {
       id_destination: 7,
       duration: '1h30min',
       price: 45.0,
+      service: 'LEITO CAMA',
       departures: [{ date: '', time: '09:00' }],
     }, // SP (Tietê) -> Campinas
     {
@@ -99,6 +109,7 @@ export default defineEventHandler((event) => {
       id_destination: 1,
       duration: '8h15min',
       price: 195.0,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '21:45' }],
     }, // SP (B. Funda) -> PG
 
@@ -109,6 +120,7 @@ export default defineEventHandler((event) => {
       id_destination: 1,
       duration: '4h20min',
       price: 105.0,
+      service: 'LEITO CAMA',
       departures: [{ date: '', time: '05:00' }],
     }, // Maringá -> PG
     {
@@ -117,6 +129,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '6h50min',
       price: 140.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '22:30' }],
     }, // Maringá -> Curitiba
     {
@@ -125,6 +138,7 @@ export default defineEventHandler((event) => {
       id_destination: 3,
       duration: '5h10min',
       price: 125.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '16:00' }],
     }, // Maringá -> Telêmaco Borba
 
@@ -135,6 +149,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '8h45min',
       price: 210.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '20:00' }],
     }, // Campinas -> Curitiba
     {
@@ -143,6 +158,7 @@ export default defineEventHandler((event) => {
       id_destination: 4,
       duration: '1h40min',
       price: 42.0,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '06:45' }],
     }, // Campinas -> SP (Tietê)
 
@@ -153,6 +169,7 @@ export default defineEventHandler((event) => {
       id_destination: 1,
       duration: '2h35min',
       price: 62.0,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '17:30' }],
     }, // Telêmaco -> PG
     {
@@ -161,6 +178,7 @@ export default defineEventHandler((event) => {
       id_destination: 8,
       duration: '5h00min',
       price: 130.0,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '09:15' }],
     }, // Telêmaco -> Maringá
 
@@ -171,6 +189,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '13h00min',
       price: 310.0,
+      service: 'LEITO CAMA',
       departures: [{ date: '', time: '18:00' }],
     }, // Rio -> Curitiba
 
@@ -180,6 +199,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h30min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '07:30' }],
     }, // PG -> Curitiba,
     {
@@ -188,6 +208,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h00min',
       price: 48.5,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '09:00' }],
     }, // PG -> Curitiba,
     {
@@ -196,6 +217,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h00min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '10:00' }],
     }, // PG -> Curitiba,
     {
@@ -204,6 +226,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h00min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '11:00' }],
     }, // PG -> Curitiba
 
@@ -213,6 +236,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h20min',
       price: 48.5,
+      service: 'EXECUTIVO',
       departures: [{ date: '', time: '12:00' }],
     }, // PG -> Curitiba,
     {
@@ -221,6 +245,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h20min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '13:30' }],
     }, // PG -> Curitiba,
     {
@@ -229,6 +254,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h20min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '14:00' }],
     }, // PG -> Curitiba,
     {
@@ -237,6 +263,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h00min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '15:35' }],
     }, // PG -> Curitiba
 
@@ -246,6 +273,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h30min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '18:00' }],
     }, // PG -> Curitiba,
     {
@@ -254,6 +282,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h20min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '19:20' }],
     }, // PG -> Curitiba,
     {
@@ -262,6 +291,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '2h20min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '21:30' }],
     }, // PG -> Curitiba,
     {
@@ -270,6 +300,7 @@ export default defineEventHandler((event) => {
       id_destination: 2,
       duration: '1h50min',
       price: 48.5,
+      service: 'CONVENCIONAL',
       departures: [{ date: '', time: '23:59' }],
     }, // PG -> Curitiba
   ];

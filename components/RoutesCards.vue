@@ -1,8 +1,8 @@
 <template>
         <div
-
             class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:translate-y-[-4px] my-6 hover:border-blue-400 transition-all duration-200"
           >
+          <span class="font-bold mb-4 text-sm text-blue-500">{{viagem.service || "CONVENCIONAL"}}</span>
             <div class="flex items-center justify-between mb-6">
               <div class="flex flex-col">
                 <span class="text-2xl font-extrabold text-gray-900 leading-none">
@@ -57,7 +57,7 @@
               <button
                 v-if="!id_selecionado"
                 class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold shadow-sm transition-colors"
-                @click="selectTrip(viagem.id, viagem.price, viagem.departures[0]?.time)"
+                @click="selectTrip(viagem.id, viagem.price, viagem.departures[0]?.time, viagem.service)"
               >
                 Selecionar
               </button>
@@ -79,14 +79,16 @@ const {
     destinoSelecionado,
     ticketPrice,
     selectedSeats,
+    serviceType,
     passengers,
     unitPrice
   } = useBusStore();
 
-    const selectTrip = (id, price, departure) => {
+    const selectTrip = (id, price, departure, service) => {
     id_selecionado.value = id;
     ticketPrice.value = parseFloat(price);
     unitPrice.value = parseFloat(price);
     partida.value = departure;
+    serviceType.value = service;
   };
 </script>

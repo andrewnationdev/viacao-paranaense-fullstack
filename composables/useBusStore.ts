@@ -18,10 +18,12 @@ export const useBusStore = () => {
   const unitPrice = useState('unitPrice', () => 0.0);
   const paymentConfirmed = useState('paymentConfirmed', () => false)
   const partida = useState('partida', () =>  "");
+  const serviceType = useState('service', () => "")
 
   return {
     origemSelecionada,
     destinoSelecionado,
+    serviceType,
     id_selecionado,
     isInSearchMode,
     dataSelecionada,

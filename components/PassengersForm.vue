@@ -93,6 +93,7 @@ onMounted(() => {
   ticketPrice,
   tickets,
   partida,
+  serviceType,
   paymentConfirmed
 } = useBusStore();
 
@@ -106,7 +107,8 @@ const finalizarReserva = async () => {
       passengers: Object.entries(passengers).map(([seat, cpf]) => ({
         seat_number: Number(seat),
         cpf: cpf,
-      }))
+      })),
+      service: serviceType.value
     }
 
     window.open("https://www.bing.com/ck/a?!&&p=9699ca9a7a33f3573c46968fdc4bc8f97f908a56e9277957411e40f7646268d2JmltdHM9MTc3MDMzNjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3aea7f-0a32-62cd-180b-fc8b0b056369&u=a1aHR0cHM6Ly9udWJhbmsuY29tLmJyL251L2NvbnRhP21zb2NraWQ9MGQzYWVhN2YwYTMyNjJjZDE4MGJmYzhiMGIwNTYzNjk");
