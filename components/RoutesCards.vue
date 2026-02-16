@@ -1,5 +1,6 @@
 <template>
         <div
+            v-if="id_selecionado ? id_selecionado == viagem.id : true"
             class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:translate-y-[-4px] my-6 hover:border-blue-400 transition-all duration-200"
           >
           <span class="font-bold mb-4 text-sm text-blue-500">{{viagem.service || "CONVENCIONAL"}}</span>

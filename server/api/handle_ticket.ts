@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const calculateBoardingFee = (price: number): number => {
-        return price > BOARDING_FEE_REDUCTION ? price - BOARDING_FEE_REDUCTION : 0;
+        return price > BOARDING_FEE_REDUCTION ? BOARDING_FEE_REDUCTION : 0;
     };
 
     const calculateToll = (price: number): number => {
