@@ -122,10 +122,17 @@ const finalizarReserva = async () => {
         body: JSON.stringify(payload)
       });
       const data = await tickets_req.json();
-      if(data.status.code == 200){
+      if (data.status.code == 200) {
         alert('Reserva enviada com sucesso!');
+
         tickets.value = data.data;
         paymentConfirmed.value = true;
+
+        const history = JSON.parse(localStorage.getItem('purchases')) || [];
+
+        const newItems = Array.isArray(data.data) ? data.data : [data.data];
+        const updatedHistory = [...history, ...newItems];
+        localStorage.setItem('purchases', JSON.stringify(updatedHistory));
       } else {
         alert(data.status.message);
       }
