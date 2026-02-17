@@ -14,6 +14,7 @@
         >
         <select
           v-model="origemSelecionada"
+          disabled="lockChanges"
           class="p-3 border-2 border-gray-200 rounded-lg text-gray-700 bg-white focus:border-blue-500 focus:ring-3 focus:ring-blue-100 outline-none transition-all"
           required
         >
@@ -34,7 +35,7 @@
         >
         <select
           v-model="destinoSelecionado"
-          :disabled="!origemSelecionada"
+          :disabled="!origemSelecionada || lockChanges"
           class="p-3 border-2 border-gray-200 rounded-lg text-gray-700 bg-white focus:border-blue-500 focus:ring-3 focus:ring-blue-100 outline-none transition-all disabled:bg-gray-50 disabled:cursor-not-allowed"
           required
         >
@@ -61,6 +62,7 @@
         >
         <input
           type="date"
+          disabled="lockChanges"
           v-model="dataSelecionada"
           class="p-3 border-2 border-gray-200 rounded-lg text-gray-700 focus:border-teal-500 focus:ring-3 focus:ring-teal-100 outline-none transition-all"
           :min="today"
@@ -70,6 +72,7 @@
 
       <button
         type="submit"
+        disabled="lockChanges"
         class="w-full p-4 bg-green-700 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md"
       >
         Buscar Passagens
@@ -92,6 +95,14 @@ const {
 } = useBusStore();
 
 const { data } = defineProps(['cidades', 'viagens']);
+
+const lockChanges = () => {
+  if(id_selecionado.value && id_destination.value && id_origin.value){
+    return true;
+  }
+
+  return false;
+}
 
 const citiesMap = computed(() => {
   if (!data.cidades.value) return {};
