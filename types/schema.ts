@@ -1,11 +1,34 @@
 export interface ITicket {
+    id_service: number;
+    id_ticket: number;
+    id_origin: number;
+    id_destination: number;
+    departure_time: TDateTime;
+    type: string;
+    bus_type: TServices;
+    seat_number: number;
+    departure_date: TDateTime;
+    cpf: string;
+    price: number;
+    boarding_fee: number;
+    toll: number;
+    sha_code: string;
+}
 
+export interface ITicketEndpoint {
+    status: IStatus;
+    data: ITicket[];
 }
 
 export interface ICity {
     id: number;
     code: string;
     name: string;
+}
+
+interface IStatus {
+    code: number | string;
+    message: string;
 }
 
 export interface IItinerario {
@@ -21,10 +44,7 @@ export interface ISeat {
 }
 
 export interface ISeatsEndpoint {
-    status: {
-        code: number | string;
-        message: string;
-    },
+    status: IStatus;
     data: {
         available_seats: ISeat[];
         message: () => string | undefined;

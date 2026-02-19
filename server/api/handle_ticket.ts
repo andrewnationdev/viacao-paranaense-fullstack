@@ -1,6 +1,7 @@
 import { createHash } from 'crypto'
+import { ITicket, ITicketEndpoint } from '~/types/schema';
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event):Promise<ITicketEndpoint> => {
     const body = await readBody(event)
     const { id_origin, price, service, id_destination, date, passengers } = body
 
@@ -26,7 +27,7 @@ export default defineEventHandler(async (event) => {
         return price * TOLL_RATE;
     };
 
-    const data = passengers.map((p) => {
+    const data:ITicket[] = passengers.map((p) => {
         const seed = `${id_origin}-${id_destination}-${p.cpf}-${p.seat_number}-${date}`
         
         return {
