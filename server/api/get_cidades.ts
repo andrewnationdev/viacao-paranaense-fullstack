@@ -1,5 +1,7 @@
+import { ICity } from "~/types/schema";
+
 export default defineEventHandler((event) => {
-  const cities = [
+  const cities:ICity[] = [
     {
       id: 1,
       code: 'PG',

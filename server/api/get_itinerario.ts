@@ -1,4 +1,6 @@
-export default defineEventHandler(async (event) => {
+import { IItinerario } from "~/types/schema";
+
+export default defineEventHandler(async (event):Promise<IItinerario> => {
     const { id_origin, id_destination } = getQuery(event);
     const cities = await $fetch('/api/get_cidades');
   
@@ -12,7 +14,7 @@ export default defineEventHandler(async (event) => {
       });
     }
   
-    const formatName = (name: string) => name.split(' - ')[0].toUpperCase();
+    const formatName = (name: string) => name?.split(' - ')[0]?.toUpperCase();
   
     return {
       itinerary: `${formatName(origin.name)} X ${formatName(destination.name)}`,

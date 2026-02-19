@@ -1,5 +1,7 @@
-export default defineEventHandler((event) => {
-  return [
+import { IRoutes } from "~/types/schema";
+
+export default defineEventHandler((event):IRoutes[] => {
+  const data:IRoutes[] = [
     // --- SAÍDAS DE PONTA GROSSA (ID 1) ---
     {
       id: 1,
@@ -72,6 +74,7 @@ export default defineEventHandler((event) => {
       id_destination: 6,
       duration: '12h30min',
       price: 280.0,
+      service: "LEITO CAMA",
       departures: [{ date: '', time: '19:30' }],
     }, // Curitiba -> Rio
     {
@@ -304,4 +307,6 @@ export default defineEventHandler((event) => {
       departures: [{ date: '', time: '23:59' }],
     }, // PG -> Curitiba
   ];
+
+  return data;
 });

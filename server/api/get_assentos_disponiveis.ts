@@ -1,4 +1,6 @@
-export default defineEventHandler(async (event) => {
+import { ISeat, ISeatsEndpoint } from "~/types/schema";
+
+export default defineEventHandler(async (event):Promise<ISeatsEndpoint> => {
     const query = await getQuery(event)
     const { id_origin, id_destination, date, departure } = query
 
@@ -12,7 +14,8 @@ export default defineEventHandler(async (event) => {
             occupied_seats_set.add(seat_number);
         }
     
-        const seats = [];
+        const seats:ISeat[] = [];
+
         for (let i = 1; i <= 42; i++) {
             seats.push({
                 id: i,
