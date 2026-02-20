@@ -6,7 +6,7 @@
     <a
       aria-role="button"
       title="Meus Bilhetes"
-      @click="window.alert("hello")"
+      @click="window.alert('Em implementação')"
       class="text-slate-400 hover:cursor-pointer hover:text-white"
     >
       <ShoppingCart />
