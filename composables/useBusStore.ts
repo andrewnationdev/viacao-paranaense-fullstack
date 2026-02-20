@@ -19,6 +19,7 @@ export const useBusStore = () => {
   const paymentConfirmed = useState('paymentConfirmed', () => false)
   const partida = useState('partida', () =>  "");
   const serviceType = useState('service', () => "")
+  const showBoughtTickets = useState('showBoughtTickets', () => false)
 
   return {
     origemSelecionada,
@@ -28,6 +29,7 @@ export const useBusStore = () => {
     isInSearchMode,
     dataSelecionada,
     partida,
+    showBoughtTickets,
     citiesData,
     tickets,
     routesData,
