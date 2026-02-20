@@ -5,11 +5,6 @@
     class="bg-gray-100 p-5 font-sans"
   >
     <div class="max-w-md mx-auto mb-6 text-center">
-    <div class="m-4 bg-red-600 rounded-[1.5rem] p-5"
-    v-if="seats.data.message == 'Não há assentos disponíveis nesta data'"
-    >
-      <span class="text-white">Não há assentos disponíveis nesta data</span>
-    </div>
       <h2 class="text-xl font-bold text-gray-800">Selecione suas Poltronas</h2>
       <p class="text-sm text-gray-500 mt-1">
         Selecionadas:
@@ -23,8 +18,16 @@
       </p>
     </div>
 
+    <div class="flex flex-col items-center gap-4 m-4 bg-red-600 rounded-[1.5rem] p-5" v-if="!hasAvailableSeats">
+      <span class="text-white">Não há assentos disponíveis nesta data</span>
+      <button 
+        class="w-full py-4 rounded-2xl font-black text-lg transition-all shadow-xsm active:scale-95 bg-red-500 text-white hover:bg-blue-700 shadow-blue-200"
+        @click="window.reload()"
+      >Buscar Outra Data</button>
+    </div>
+
     <div
-      v-if="seats.data.message != 'Não há assentos disponíveis nesta data'"
+      v-if="hasAvailableSeats"
       class="max-w-sm mx-auto bg-white p-6 rounded-[2.5rem] shadow-2xl border-x-4 border-gray-200 relative"
     >
       <div
@@ -88,6 +91,7 @@
 
     <div class="max-w-sm mx-auto mt-8">
       <button
+        v-if="hasAvailableSeats"
         :disabled="selectedSeats.length === 0"
         class="w-full py-4 rounded-2xl font-black text-lg transition-all shadow-lg active:scale-95"
         :class="
@@ -134,6 +138,14 @@ const { data: seats, pending } = useFetch('/api/get_assentos_disponiveis', {
     date: () => dataSelecionada.value
   }
 })
+
+const hasAvailableSeats = computed(() => {
+  const seatList = seats.value?.data?.available_seats;
+  
+  if (!seatList || seatList.length === 0) return false;
+
+  return seatList.some(seat => !seat.isOccupied);
+});
 
 const occupiedSeats = computed(() => {
   return seats.value?.data?.available_seats

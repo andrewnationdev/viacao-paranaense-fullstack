@@ -47,7 +47,7 @@ export interface ISeatsEndpoint {
     status: IStatus;
     data: {
         available_seats: ISeat[];
-        message: () => string | undefined;
+        message: string | undefined;
     }
 }
 

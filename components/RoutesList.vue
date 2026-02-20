@@ -60,6 +60,6 @@ const viagensFiltradas = computed(() => {
   return routesData.value.filter(
     (v) =>
       Number(v.id_origin) == idOrigem && Number(v.id_destination) == idDestino
-  );
+  ).sort((a,b) => a.departures[0].time.localeCompare(b.departures[0].time));
 });
 </script>

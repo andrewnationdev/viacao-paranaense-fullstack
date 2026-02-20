@@ -35,6 +35,8 @@ export default defineEventHandler(async (event):Promise<ISeatsEndpoint> => {
     }
 
     const seats = handleFetchAvailableSeats();
+    const hasAvailable = seats.some(seat => !seat.isOccupied);
+    const statusMessage = hasAvailable ? undefined : "Não há assentos disponíveis nesta data";
 
     return {
         status: {
@@ -43,14 +45,7 @@ export default defineEventHandler(async (event):Promise<ISeatsEndpoint> => {
         },
         data: {
             available_seats: seats,
-            message: () => {
-                const hasAvailable = seats.some(seat => !seat.isOccupied);
-                
-                if (!hasAvailable) {
-                    return "Não há assentos disponíveis nesta data";
-                }
-                return undefined;
-            }
+            message: statusMessage
         }
     }
 })
