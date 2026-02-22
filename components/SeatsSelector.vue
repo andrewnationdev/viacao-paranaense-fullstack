@@ -1,59 +1,43 @@
 <template>
- <div
-    ref="seats_selec"
-    v-if="id_selecionado && !seatsConfirmed"
-    class="bg-gray-100 p-5 font-sans"
-  >
+  <div ref="seats_selec" v-if="id_selecionado && !seatsConfirmed" class="bg-gray-100 p-5 font-sans">
     <div class="max-w-md mx-auto mb-6 text-center">
       <h2 class="text-xl font-bold text-gray-800">Selecione suas Poltronas</h2>
       <p class="text-sm text-gray-500 mt-1">
         Selecionadas:
         <span class="font-bold text-blue-600">
           {{
-            selectedSeats.length > 0
-              ? selectedSeats.sort((a, b) => a - b).join(', ')
-              : 'Nenhuma'
-          }}
+    selectedSeats.length > 0
+      ? selectedSeats.sort((a, b) => a - b).join(', ')
+      : 'Nenhuma'
+  }}
         </span>
       </p>
     </div>
 
     <div class="flex flex-col items-center gap-4 m-4 bg-red-600 rounded-[1.5rem] p-5" v-if="!hasAvailableSeats">
       <span class="text-white">Não há assentos disponíveis nesta data</span>
-      <button 
+      <button
         class="w-full py-4 rounded-2xl font-black text-lg transition-all shadow-xsm active:scale-95 bg-red-500 text-white hover:bg-blue-700 shadow-blue-200"
-        @click="window.reload()"
-      >Buscar Outra Data</button>
+        @click="window.reload()">Buscar Outra Data</button>
     </div>
 
-    <div
-      v-if="hasAvailableSeats"
-      class="max-w-sm mx-auto bg-white p-6 rounded-[2.5rem] shadow-2xl border-x-4 border-gray-200 relative"
-    >
+    <div v-if="hasAvailableSeats"
+      class="max-w-sm mx-auto bg-white p-6 rounded-[2.5rem] shadow-2xl border-x-4 border-gray-200 relative">
       <div
-        class="w-full h-16 bg-gray-800 rounded-t-[2rem] mb-8 flex justify-between items-center px-8 relative overflow-hidden"
-      >
+        class="w-full h-16 bg-gray-800 rounded-t-[2rem] mb-8 flex justify-between items-center px-8 relative overflow-hidden">
         <div class="w-12 h-1 bg-gray-600 rounded-full"></div>
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"
-        ></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
       </div>
 
       <div class="grid grid-cols-5 gap-y-3">
         <template v-for="row in 10" :key="row">
-          <button
-            @click="toggleSeat(row * 4 - 3)"
-            :class="getSeatClass(row * 4 - 3)"
-            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90"
-          >
+          <button @click="toggleSeat(row * 4 - 3)" :class="getSeatClass(row * 4 - 3)"
+            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90">
             {{ row * 4 - 3 }}
           </button>
 
-          <button
-            @click="toggleSeat(row * 4 - 2)"
-            :class="getSeatClass(row * 4 - 2)"
-            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90"
-          >
+          <button @click="toggleSeat(row * 4 - 2)" :class="getSeatClass(row * 4 - 2)"
+            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90">
             {{ row * 4 - 2 }}
           </button>
 
@@ -61,46 +45,29 @@
             <div class="w-[1px] h-full bg-gray-100"></div>
           </div>
 
-          <button
-            @click="toggleSeat(row * 4 - 1)"
-            :class="getSeatClass(row * 4 - 1)"
-            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90"
-          >
+          <button @click="toggleSeat(row * 4 - 1)" :class="getSeatClass(row * 4 - 1)"
+            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90">
             {{ row * 4 - 1 }}
           </button>
 
-          <button
-            @click="toggleSeat(row * 4)"
-            :class="getSeatClass(row * 4)"
-            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90"
-          >
+          <button @click="toggleSeat(row * 4)" :class="getSeatClass(row * 4)"
+            class="w-10 h-10 rounded-lg border-b-4 flex items-center justify-center text-sm font-bold transition-all active:scale-90">
             {{ row * 4 }}
           </button>
-          </template>
+        </template>
       </div>
 
-      <div
-        class="mt-8 pt-4 border-t-2 border-dashed border-gray-100 flex justify-center"
-      >
-        <span
-          class="text-[10px] font-bold text-gray-300 tracking-[0.2em] uppercase"
-          >Fundo do Veículo</span
-        >
+      <div class="mt-8 pt-4 border-t-2 border-dashed border-gray-100 flex justify-center">
+        <span class="text-[10px] font-bold text-gray-300 tracking-[0.2em] uppercase">Fundo do Veículo</span>
       </div>
     </div>
 
     <div class="max-w-sm mx-auto mt-8">
-      <button
-        v-if="hasAvailableSeats"
-        :disabled="selectedSeats.length === 0"
-        class="w-full py-4 rounded-2xl font-black text-lg transition-all shadow-lg active:scale-95"
-        :class="
-          selectedSeats.length > 0
-            ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200'
-            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-        "
-        @click="confirmSeats()"
-      >
+      <button v-if="hasAvailableSeats" :disabled="selectedSeats.length === 0"
+        class="w-full py-4 rounded-2xl font-black text-lg transition-all shadow-lg active:scale-95" :class="selectedSeats.length > 0
+      ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200'
+      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+    " @click="confirmSeats()">
         Confirmar ({{ selectedSeats.length }})
       </button>
     </div>
@@ -108,7 +75,7 @@
 </template>
 
 <script setup>
- import { ref, reactive, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 
 const seats_selec = ref(null);
 
@@ -118,12 +85,9 @@ onMounted(() => {
 
 const {
   origemSelecionada,
-  buscaRealizada,
   dataSelecionada,
   id_selecionado,
   destinoSelecionado,
-  citiesData,
-  routesData,
   selectedSeats,
   seatsConfirmed,
   passengers,
@@ -141,7 +105,7 @@ const { data: seats, pending } = useFetch('/api/get_assentos_disponiveis', {
 
 const hasAvailableSeats = computed(() => {
   const seatList = seats.value?.data?.available_seats;
-  
+
   if (!seatList || seatList.length === 0) return false;
 
   return seatList.some(seat => !seat.isOccupied);
@@ -167,7 +131,7 @@ const toggleSeat = (num) => {
 const confirmSeats = () => {
   seatsConfirmed.value = true;
   ticketPrice.value = unitPrice.value * selectedSeats.value.length;
-  
+
   console.log(ticketPrice.value);
   console.log(selectedSeats.value.length);
 };

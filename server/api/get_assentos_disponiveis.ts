@@ -1,20 +1,20 @@
 import { ISeat, ISeatsEndpoint } from "~/types/schema";
 
-export default defineEventHandler(async (event):Promise<ISeatsEndpoint> => {
+export default defineEventHandler(async (event): Promise<ISeatsEndpoint> => {
     const query = await getQuery(event)
     const { id_origin, id_destination, date, departure } = query
 
     function handleFetchAvailableSeats() {
         let number_of_occupied = Math.floor(Math.random() * 42) + 1;
-        
+
         const occupied_seats_set = new Set();
-        
+
         while (occupied_seats_set.size < number_of_occupied) {
             let seat_number = Math.floor(Math.random() * 42) + 1;
             occupied_seats_set.add(seat_number);
         }
-    
-        const seats:ISeat[] = [];
+
+        const seats: ISeat[] = [];
 
         for (let i = 1; i <= 42; i++) {
             seats.push({
@@ -23,11 +23,11 @@ export default defineEventHandler(async (event):Promise<ISeatsEndpoint> => {
                 isOccupied: occupied_seats_set.has(i)
             });
         }
-    
+
         return seats;
     }
 
-    if (!id_origin || !id_destination || !date ) {
+    if (!id_origin || !id_destination || !date) {
         throw createError({
             statusCode: 400,
             statusMessage: 'Parâmetros inválidos.',

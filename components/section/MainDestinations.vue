@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-  cities: Array,
-  cities_array: Array
+    cities: Array,
+    cities_array: Array
 });
 </script>
 
@@ -9,8 +9,7 @@ const props = defineProps({
     <div class="p-12 flex flex-col gap-4 items-center w-full bg-blue-500">
         <h2 class="text-white text-bold text-2xl">Cidades Atendidas</h2>
         <ol>
-            <li class="text-white text-bold list-disc" v-for="city in cities">{{cities_array[city.id]}}</li>
+            <li class="text-white text-bold list-disc" v-for="city in cities">{{ cities_array[city.id] }}</li>
         </ol>
     </div>
 </template>
-

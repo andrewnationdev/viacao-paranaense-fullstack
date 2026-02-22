@@ -18,27 +18,21 @@ onMounted(() => {
 const { data } = defineProps(['cidades', 'viagens', 'cities_array']);
 
 const handleSelectDestination = (origin, destination) => {
-    origemSelecionada.value = origin;
-    destinoSelecionado.value = destination;
-    
-    window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-        });
-    }
+  origemSelecionada.value = origin;
+  destinoSelecionado.value = destination;
+
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
 
 const {
   origemSelecionada,
   isInSearchMode,
-  dataSelecionada,
-  id_selecionado,
-  citiesData,
   routesData,
   destinoSelecionado,
-  ticketPrice,
-  selectedSeats,
-  passengers,
 } = useBusStore();
 
 const viagensFiltradas = computed(() => {
@@ -60,6 +54,6 @@ const viagensFiltradas = computed(() => {
   return routesData.value.filter(
     (v) =>
       Number(v.id_origin) == idOrigem && Number(v.id_destination) == idDestino
-  ).sort((a,b) => a.departures[0].time.localeCompare(b.departures[0].time));
+  ).sort((a, b) => a.departures[0].time.localeCompare(b.departures[0].time));
 });
 </script>

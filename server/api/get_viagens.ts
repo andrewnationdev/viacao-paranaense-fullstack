@@ -1,7 +1,7 @@
 import { IRoutes } from "~/types/schema";
 
-export default defineEventHandler((event):IRoutes[] => {
-  const data:IRoutes[] = [
+export default defineEventHandler((event): IRoutes[] => {
+  const data: IRoutes[] = [
     // --- SAÍDAS DE PONTA GROSSA (ID 1) ---
     {
       id: 1,
