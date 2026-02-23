@@ -16,8 +16,8 @@
           <span class="text-[10px] text-blue-600 font-mono font-bold">BILHETE: #{{ ticket.id_ticket }}</span>
         </div>
         <div class="text-right">
-          <span class="block text-[10px] text-gray-400 uppercase">Classe</span>
-          <span class="font-bold text-sm text-blue-800">{{ ticket.bus_type || "CONVENCIONAL" }}</span>
+          <span class="block text-[10px] text-gray-400 uppercase">Classe | Poltrona</span>
+          <span class="font-bold text-sm text-blue-800">{{ ticket.bus_type || "CONVENCIONAL" }} | {{ ticket.seat_number }}</span>
         </div>
       </div>
 
@@ -29,38 +29,19 @@
           </span>
         </div>
 
-        <div class="flex-grow flex flex-col items-center px-4 relative">
-          <div class="h-[1px] bg-dashed bg-gray-300 w-full border-t border-dashed"></div>
-          <span class="text-lg mt-[-14px] bg-slate-50 px-2">🚌</span>
-        </div>
-
         <div class="flex flex-col text-right">
-          <span class="text-xl font-black text-gray-900">--:--</span>
+          <span class="text-xl font-black text-gray-900">
+          --:--
+          </span>
           <span class="text-[10px] text-gray-500 uppercase font-medium">
             {{ cities_array[ticket.id_destination] || 'Destino ' + ticket.id_destination }}
           </span>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
-        <div>
-          <span class="text-[10px] text-gray-400 uppercase block">Passageiro (CPF)</span>
-          <span class="text-sm font-semibold text-gray-800">{{ ticket.cpf }}</span>
-        </div>
-        <div class="text-right">
-          <span class="text-[10px] text-gray-400 uppercase block">Poltrona</span>
-          <span class="text-lg font-bold text-blue-800">{{ ticket.seat_number }}</span>
-        </div>
-      </div>
-
       <div class="flex flex-col items-center justify-center bg-white p-4 border-2 border-dashed border-gray-200 rounded-xl mb-4">
-        <div class="bg-gray-100 w-32 h-32 flex items-center justify-center mb-2 rounded-lg overflow-hidden">
-          <div class="text-[8px] text-center p-2 break-all font-mono text-gray-400">
-            <span class="text-lg block mb-1">📱</span>
-            {{ ticket.sha_code }}
-          </div>
-        </div>
-        <span class="text-[9px] font-mono text-gray-400 uppercase tracking-widest">Validar no Embarque</span>
+        <QRCode :ticket-data="ticket"/>
+        <span class="text-[9px] mt-4 font-mono text-gray-400 uppercase tracking-widest">Validar no Embarque</span>
       </div>
 
       <div class="flex justify-between items-center pt-2">
@@ -74,7 +55,7 @@
           @click="cancelarPassagem(ticket)"
           class="flex items-center gap-1 text-xs font-bold text-red-500 hover:text-red-700 underline decoration-dotted transition-colors"
         >
-          <span>✉️</span> Solicitar cancelamento
+          <span>✉️</span> Solicitar Cancelamento ou Alteração
         </button>
       </div>
     </div>
@@ -99,7 +80,7 @@ onMounted(() => {
 
 const cancelarPassagem = (ticket) => {
   const emailEmpresa = "suporte@suaempresa.com.br";
-  const assunto = `Solicitação de Cancelamento - Bilhete #${ticket.id_ticket}`;
+  const assunto = `Solicitação de Cancelamento/Alteração - Bilhete #${ticket.id_ticket}`;
   
   const corpo = `
     Olá, gostaria de solicitar o cancelamento/alteração do meu bilhete.
