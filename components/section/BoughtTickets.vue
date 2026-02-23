@@ -1,66 +1,82 @@
 <template>
-  <div v-for="ticket in purchasedTickets" :key="ticket.id_ticket"
-    class="bg-white rounded-2xl shadow-xl p-6 border-l-8 border-blue-800 my-6 w-full max-w-md hover:shadow-2xl transition-shadow duration-300">
+  <div class="flex flex-col items-center w-full max-w-2xl mx-auto p-4">
     
-    <div class="flex justify-between items-start mb-4">
-      <div>
-        <h2 class="text-xl font-extrabold text-gray-900 uppercase tracking-tight">Minhas Compras</h2>
-        <span class="text-[10px] text-blue-600 font-mono font-bold">BILHETE: #{{ ticket.id_ticket }}</span>
-      </div>
-      <div class="text-right">
-        <span class="block text-[10px] text-gray-400 uppercase">Classe</span>
-        <span class="font-bold text-sm text-blue-800">{{ ticket.bus_type || "CONVENCIONAL" }}</span>
-      </div>
+    <div v-if="purchasedTickets.length === 0" class="text-gray-400 italic py-10">
+      Nenhuma compra encontrada.
     </div>
 
-    <div class="flex items-center justify-between mb-6 bg-slate-50 p-4 rounded-xl">
-      <div class="flex flex-col">
-        <span class="text-xl font-black text-gray-900">{{ ticket.departure_time }}</span>
-        <span class="text-[10px] text-gray-500 uppercase font-medium">Origem ID: {{ ticket.id_origin }}</span>
-      </div>
-
-      <div class="flex-grow flex flex-col items-center px-4">
-        <div class="h-[1px] bg-dashed bg-gray-300 w-full border-t border-dashed"></div>
-        <span class="text-lg mt-[-12px]">🚌</span>
-      </div>
-
-      <div class="flex flex-col text-right">
-        <span class="text-xl font-black text-gray-900">--:--</span> <span class="text-[10px] text-gray-500 uppercase font-medium">Destino ID: {{ ticket.id_destination }}</span>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
-      <div>
-        <span class="text-[10px] text-gray-400 uppercase block">Passageiro (CPF)</span>
-        <span class="text-sm font-semibold text-gray-800">{{ ticket.cpf }}</span>
-      </div>
-      <div class="text-right">
-        <span class="text-[10px] text-gray-400 uppercase block">Poltrona</span>
-        <span class="text-lg font-bold text-blue-800">{{ ticket.seat_number }}</span>
-      </div>
-    </div>
-
-    <div class="flex flex-col items-center justify-center bg-white p-4 border-2 border-dashed border-gray-200 rounded-xl mb-4">
-      <div class="bg-gray-100 w-32 h-32 flex items-center justify-center mb-2 rounded-lg">
-        <div class="text-[8px] text-center p-2 break-all font-mono text-gray-500">
-          [QR CODE]<br>{{ ticket.sha_code }}
+    <div 
+      v-for="ticket in purchasedTickets" 
+      :key="ticket.id_ticket"
+      class="bg-white rounded-2xl shadow-xl p-6 border-l-8 border-blue-800 mb-8 w-full hover:shadow-2xl transition-all duration-300"
+    >
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h2 class="text-xl font-extrabold text-gray-900 uppercase tracking-tight">CPF: {{ticket.cpf}}</h2>
+          <span class="text-[10px] text-blue-600 font-mono font-bold">BILHETE: #{{ ticket.id_ticket }}</span>
+        </div>
+        <div class="text-right">
+          <span class="block text-[10px] text-gray-400 uppercase">Classe</span>
+          <span class="font-bold text-sm text-blue-800">{{ ticket.bus_type || "CONVENCIONAL" }}</span>
         </div>
       </div>
-      <span class="text-[9px] font-mono text-gray-400 uppercase">Validar Embarque</span>
-    </div>
 
-    <div class="flex justify-between items-center pt-2">
-      <div class="flex flex-col">
-        <span class="text-[10px] text-gray-400 uppercase">Valor Pago</span>
-        <span class="text-lg font-bold text-green-600">
-          R$ {{ ticket.price.toFixed(2).replace('.', ',') }}
-        </span>
+      <div class="flex items-center justify-between mb-6 bg-slate-50 p-4 rounded-xl">
+        <div class="flex flex-col">
+          <span class="text-xl font-black text-gray-900">{{ ticket.departure_time }}</span>
+          <span class="text-[10px] text-gray-500 uppercase font-medium">
+            {{ cities_array[ticket.id_origin] || 'Origem ' + ticket.id_origin }}
+          </span>
+        </div>
+
+        <div class="flex-grow flex flex-col items-center px-4 relative">
+          <div class="h-[1px] bg-dashed bg-gray-300 w-full border-t border-dashed"></div>
+          <span class="text-lg mt-[-14px] bg-slate-50 px-2">🚌</span>
+        </div>
+
+        <div class="flex flex-col text-right">
+          <span class="text-xl font-black text-gray-900">--:--</span>
+          <span class="text-[10px] text-gray-500 uppercase font-medium">
+            {{ cities_array[ticket.id_destination] || 'Destino ' + ticket.id_destination }}
+          </span>
+        </div>
       </div>
-      <button 
-        @click="cancelarPassagem(ticket)"
-        class="text-xs font-bold text-red-500 hover:text-red-700 underline decoration-dotted transition-colors">
-        Solicitar cancelamento
-      </button>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
+        <div>
+          <span class="text-[10px] text-gray-400 uppercase block">Passageiro (CPF)</span>
+          <span class="text-sm font-semibold text-gray-800">{{ ticket.cpf }}</span>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] text-gray-400 uppercase block">Poltrona</span>
+          <span class="text-lg font-bold text-blue-800">{{ ticket.seat_number }}</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center justify-center bg-white p-4 border-2 border-dashed border-gray-200 rounded-xl mb-4">
+        <div class="bg-gray-100 w-32 h-32 flex items-center justify-center mb-2 rounded-lg overflow-hidden">
+          <div class="text-[8px] text-center p-2 break-all font-mono text-gray-400">
+            <span class="text-lg block mb-1">📱</span>
+            {{ ticket.sha_code }}
+          </div>
+        </div>
+        <span class="text-[9px] font-mono text-gray-400 uppercase tracking-widest">Validar no Embarque</span>
+      </div>
+
+      <div class="flex justify-between items-center pt-2">
+        <div class="flex flex-col">
+          <span class="text-[10px] text-gray-400 uppercase">Valor Pago</span>
+          <span class="text-lg font-bold text-green-600">
+            R$ {{ typeof ticket.price === 'number' ? ticket.price.toFixed(2).replace('.', ',') : ticket.price }}
+          </span>
+        </div>
+        <button 
+          @click="cancelarPassagem(ticket)"
+          class="flex items-center gap-1 text-xs font-bold text-red-500 hover:text-red-700 underline decoration-dotted transition-colors"
+        >
+          <span>✉️</span> Solicitar cancelamento
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -68,13 +84,16 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+const {data} = defineProps(['cities_array'])
+
 const purchasedTickets = ref([]);
 
 onMounted(() => {
   const stored = localStorage.getItem('purchases');
   if (stored) {
     const parsed = JSON.parse(stored);
-    purchasedTickets.value = parsed.data || [];
+    purchasedTickets.value = Array.isArray(parsed) ? parsed : (parsed.data || []);
+    console.log(parsed)
   }
 });
 

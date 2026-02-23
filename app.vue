@@ -2,7 +2,7 @@
   <Header />
   <div class="min-h-screen bg-gray-100 p-5 font-sans">
     <DebugPanel v-if="false" />
-    <SectionBoughtTickets v-if="showBoughtTickets"/>
+    <SectionBoughtTickets v-if="showBoughtTickets" :cities_array="citiesMap"/>
     <Form v-if="viagens" :cidades="cidades" :viagens="viagens" />
     <RoutesList :viagens="viagens" :cidades="cidades" :cities_array="citiesMap" v-if="isInSearchMode"/>
     <NotFound v-else/>
