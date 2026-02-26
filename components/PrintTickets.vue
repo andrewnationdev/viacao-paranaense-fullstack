@@ -14,7 +14,7 @@
           <span>Tipo Viagem: <strong>{{ ticket.type }}</strong></span>
           <span>Linha: <strong>{{ linha.itinerary }}</strong></span>
           <hr />
-          <span>Tarifa: <strong>{{ formatCurrency(ticket.price) }}</strong></span>
+          <span>Tarifa: <strong>{{ formatCurrency(ticket.price - ticket.toll - ticket.boarding_fee) }}</strong></span>
           <span>Pedágio: <strong>{{ formatCurrency(ticket.toll) }}</strong></span>
           <span>Taxa de Embarque: <strong>{{ formatCurrency(ticket.boarding_fee) }}</strong></span>
           <span>Total a Pagar: <strong>{{ formatCurrency(ticket.price) }}</strong></span>
@@ -80,11 +80,13 @@ function resetAll() {
   ticketPrice.value = 0.0;
   paymentConfirmed.value = false;
 
-  window.scroll({
+  window.reload()
+
+  /*window.scroll({
     top: 0,
     left: 0,
     behavior: 'smooth'
-  });
+  });*/
 }
 
 async function downloadPDF(index) {

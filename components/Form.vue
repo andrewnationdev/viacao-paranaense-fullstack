@@ -44,7 +44,7 @@
       </div>
 
       <button type="submit" :disabled="lockChanges"
-        class="w-full cursor-pointer p-4 bg-green-700 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md">
+        class="w-full disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer p-4 bg-green-700 hover:bg-teal-600 active:scale-95 text-white font-bold rounded-lg text-lg transition-all shadow-md">
         Buscar Passagens
       </button>
     </form>
