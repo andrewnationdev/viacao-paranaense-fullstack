@@ -83,6 +83,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { WEBSITE } from '../utils/website.config.ts';
 
 const {data} = defineProps(['cities_array'])
 
@@ -108,7 +109,7 @@ onMounted(() => {
 });
 
 const cancelarPassagem = (ticket) => {
-  const emailEmpresa = "suporte@suaempresa.com.br";
+  const emailEmpresa = WEBSITE.contact.email;
   const assunto = `Solicitação de Cancelamento/Alteração - Bilhete #${ticket.id_ticket}`;
   
   const corpo = `
