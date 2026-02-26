@@ -5,6 +5,10 @@
             <p>{{WEBSITE.contact.phone_number}}</p>
             <p>{{WEBSITE.contact.email}}</p>
         </div>
+        <div class="flex-col text-white text-center gap-4">
+            <a href="https://www.gov.br/antt/pt-br" class="hover:underline">Agência Nacional de Transportes Terrestres (ANTT)</a>
+            <a href="https://www.gov.br/antt/pt-br/assuntos/passageiros/viajantes/direitos-e-deveres" class="hover:underline">Direitos e Deveres dos Passageiros</a>
+        </div>
         <div class="gap-4 justify-center flex p-8">
             <a :href="WEBSITE.contact.social.whatsapp">
                 <IconsWhatsApp />
