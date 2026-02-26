@@ -64,11 +64,19 @@
         </div>
 
         <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
-          <div class="flex flex-col">
+          <div class="flex justify-between w-full">
+            <div class="flex flex-col">
             <span class="text-[10px] text-gray-400 uppercase">Valor Pago</span>
             <span class="text-lg font-bold text-green-600 leading-tight">
               R$ {{ typeof ticket.price === 'number' ? ticket.price.toFixed(2).replace('.', ',') : ticket.price }}
             </span>
+          </div>
+          <div class="flex flex-col text-right">
+            <span class="text-[10px] text-gray-400 uppercase">DATA DE EMBARQUE</span>
+            <span class="text-lg font-bold text-green-600 leading-tight">
+              {{formatDate(ticket.departure_date)}}
+            </span>
+          </div>
           </div>
           <button 
             @click="cancelarPassagem(ticket)"
@@ -118,6 +126,7 @@ const cancelarPassagem = (ticket) => {
     Dados do Bilhete:
     - ID: ${ticket.id_ticket}
     - CPF: ${ticket.cpf}
+    - Data: ${ticket.departure_date}
     - Poltrona: ${ticket.seat_number}
     - Código de Validação (SHA): ${ticket.sha_code}
     

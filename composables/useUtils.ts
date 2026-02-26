@@ -10,3 +10,9 @@ export const formatCurrency = (value: string | number | undefined | null): strin
 
     return `R$ ${parseInt(val).toFixed(2).replaceAll('.', ',')}`;
 };
+
+export const formatDate = (date: string) => {
+    const formattedDate = new Date(date).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+
+    return formattedDate;
+}
