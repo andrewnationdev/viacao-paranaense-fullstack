@@ -32,6 +32,7 @@ const {
   origemSelecionada,
   isInSearchMode,
   routesData,
+  dataSelecionada,
   destinoSelecionado,
 } = useBusStore();
 
@@ -51,9 +52,28 @@ const viagensFiltradas = computed(() => {
     destinoSelecionado,
   });
 
-  return routesData.value.filter(
-    (v) =>
-      Number(v.id_origin) == idOrigem && Number(v.id_destination) == idDestino
-  ).sort((a, b) => a.departures[0].time.localeCompare(b.departures[0].time));
+  return routesData.value
+  .filter((v) => {
+    const matchesRoute = Number(v.id_origin) == idOrigem && Number(v.id_destination) == idDestino;
+    if (!matchesRoute) return false;
+
+    const agora = new Date();
+    
+    const hojeStr = agora.toISOString().split('T')[0];
+    const dataViagemStr = dataSelecionada.value; // Assumindo que está no formato ISO ou similar
+
+    if (dataViagemStr === hojeStr) {
+      const [horas, minutos] = v.departures[0].time.split(':').map(Number);
+      const horarioPartida = new Date(agora);
+      horarioPartida.setHours(horas, minutes, 0, 0);
+
+      const limiteVenda = new Date(agora.getTime() + 3 * 60 * 60 * 1000);
+
+      return horarioPartida > limiteVenda;
+    }
+
+    return true;
+  })
+  .sort((a, b) => a.departures[0].time.localeCompare(b.departures[0].time));
 });
 </script>
