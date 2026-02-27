@@ -46,7 +46,6 @@ import { ref, onMounted } from 'vue';
 import { vMaska } from "maska/vue";
 
 import { useToast } from "vue-toastification";
-const toast = useToast();
 
 const pass_form = ref(null);
 
@@ -94,7 +93,10 @@ const finalizarReserva = async () => {
     });
     const data = await tickets_req.json();
     if (data.status.code == 200) {
-      toast.success('Reserva enviada com sucesso!');
+      if (process.client) {
+        const toast = useToast();
+        toast.success('Reserva enviada com sucesso!');
+      }
 
       tickets.value = data.data;
       paymentConfirmed.value = true;
@@ -105,10 +107,16 @@ const finalizarReserva = async () => {
       const updatedHistory = [...history, ...newItems];
       localStorage.setItem('purchases', JSON.stringify(updatedHistory));
     } else {
-      toast.error(data.status.message);
+      if(process.client){
+        const toast = useToast();
+        toast.error(data.status.message);
+      }
     }
   } catch (err) {
-    toast.error(err)
+    if(process.client){
+      const toast = useToast();
+      toast.error(err)
+    }
   }
 };
 </script>
