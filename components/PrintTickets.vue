@@ -8,7 +8,7 @@
           <span class="text-center text-xl m-4 font-bold">VIAÇÃO PARANAENSE</span>
           <span>Origem: <strong>{{ cities_array[ticket.id_origin].toUpperCase() }}</strong></span>
           <span>Destino: <strong>{{ cities_array[ticket.id_destination].toUpperCase() }}</strong></span>
-          <span>Data : <strong>{{ ticket.departure_date.replaceAll('-', '/') }}</strong> | Horário:
+          <span>Data : <strong>{{ formatDate(ticket.departure_date.replaceAll('-', '/')) }}</strong> | Horário:
             <strong>{{ ticket.departure_time }}</strong> | Poltrona: <strong>{{ ticket.seat_number }}</strong></span>
           <span>Bilhete: <strong>{{ ticket.id_ticket }}</strong> | Tipo: <strong>{{ ticket.bus_type }}</strong></span>
           <span>Tipo Viagem: <strong>{{ ticket.type }}</strong></span>
