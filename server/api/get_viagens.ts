@@ -1,6 +1,6 @@
-import { IRoutes } from "~/types/schema";
+import { IRoutes, IBusResponse } from "~/types/schema";
 
-export default defineEventHandler((event): IRoutes[] => {
+export default defineEventHandler((event): IBusResponse => {
   const data: IRoutes[] = [
     // --- SAÍDAS DE PONTA GROSSA (ID 1) ---
     {
@@ -308,5 +308,20 @@ export default defineEventHandler((event): IRoutes[] => {
     }, // PG -> Curitiba
   ];
 
-  return data;
+  const now = new Date();
+  const limitTime = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+
+  const availableTravels = data.filter(route => {
+    return route.departures.every(departure => {
+      const [hours, minutes] = departure.time.split(':').map(Number);
+      const departureDate = new Date(now);
+      departureDate.setHours(hours!, minutes!, 0, 0);
+      return departureDate > limitTime;
+    });
+  });
+
+  return {
+    allRoutes: data,
+    availableTravels: availableTravels
+  };
 });

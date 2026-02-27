@@ -3,8 +3,8 @@
   <div class="min-h-screen bg-gray-100 p-5 font-sans">
     <DebugPanel v-if="false" />
     <SectionBoughtTickets v-if="showBoughtTickets" :cities_array="citiesMap"/>
-    <Form v-if="viagens" :cidades="cidades" :viagens="viagens" />
-    <RoutesList :viagens="viagens" :cidades="cidades" :cities_array="citiesMap" v-if="isInSearchMode"/>
+    <Form v-if="viagens" :cidades="cidades" :viagens="viagens.allRoutes" />
+    <RoutesList :viagens="viagens.availableTravels" :cidades="cidades" :cities_array="citiesMap" v-if="isInSearchMode"/>
     <NotFound v-else/>
     <SeatsSelector/>
   <PassengersForm/>
@@ -37,7 +37,7 @@ const {
 
 if (cidades && viagens) {
   citiesData.value = cidades;
-  routesData.value = viagens;
+  routesData.value = viagens.allRoutes;
 }
 
 const citiesMap = computed(() => {
