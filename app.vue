@@ -18,6 +18,7 @@
 <script setup>
 const { data: cidades } = await useFetch('/api/get_cidades');
 const { data: viagens } = await useFetch('/api/get_viagens');
+const { data: rotas } = await useFetch('/api/get_routes');
 const { data: mainDestinations } = await useFetch('/api/get_main_destinations');
 
 const {
@@ -37,7 +38,7 @@ const {
 
 if (cidades && viagens) {
   citiesData.value = cidades;
-  routesData.value = viagens.allRoutes;
+  routesData.value = rotas;
 }
 
 const citiesMap = computed(() => {

@@ -68,9 +68,3 @@ export interface IRoutes {
     price: number;
     service: TServices;
     departures: IDepartures[],
-}
-
-export interface IBusResponse {
-    allRoutes: IRoutes[];
-    availableTravels: IRoutes[];
-}
