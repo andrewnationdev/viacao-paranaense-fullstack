@@ -1,4 +1,4 @@
-import { IRoutes, IBusResponse } from "~/types/schema";
+import { IRoutes } from "~/types/schema";
 
 export default defineEventHandler((event): IRoutes[] => {
     const data: IRoutes[] = [

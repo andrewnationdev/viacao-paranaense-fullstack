@@ -27,6 +27,26 @@ Após descompactar o projeto, execute o seguinte comando no terminal para instal
 
 ## API
 
+Todos os endpoints da API são acessíveis através da URL `/api/endpoint`, sendo que alguns requerem parâmetros específicos.
+
+### GET_ROUTES
+
+Este endpoint retorna todas as rotas disponíveis e é a partir daqui que o sistema monta as combinações de origem e destino. Ele também fornece as rotas de viagem para o endpoint `get_viagens`. O retorno da API é um array do tipo `IRoutes[]`, assim:
+
+```ts
+interface IRoutes {
+    id: number;
+    id_origin: number;
+    id_destination: number;
+    duration: TDateTime;
+    price: number;
+    service: TServices;
+    departures: IDepartures[],
+}
+```
+
+Todas as tipagens localizam-se em `types/schema.ts`.
+
 ### GET_ASSENTOS_DISPONIVEIS
 ### GET_CIDADES
 ### GET_ITINERARIO

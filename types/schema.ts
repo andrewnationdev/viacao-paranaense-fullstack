@@ -68,3 +68,4 @@ export interface IRoutes {
     price: number;
     service: TServices;
     departures: IDepartures[],
+}
