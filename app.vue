@@ -17,8 +17,6 @@
 
 <script setup>
 const { data: cidades } = await useFetch('/api/get_cidades');
-const { data: viagens } = await useFetch('/api/get_viagens');
-const { data: rotas } = await useFetch('/api/get_routes');
 const { data: mainDestinations } = await useFetch('/api/get_main_destinations');
 
 const {
@@ -35,6 +33,16 @@ const {
   passengers,
   showBoughtTickets
 } = useBusStore();
+
+const { data: rotas } = await useFetch('/api/get_routes');
+
+const { data: viagens } = await useFetch('/api/get_viagens', {
+  params: { date: dataSelecionada }
+});
+
+watchEffect(() => {
+  if (rotas.value) routesData.value = rotas.value;
+});
 
 if (cidades && viagens) {
   citiesData.value = cidades;
