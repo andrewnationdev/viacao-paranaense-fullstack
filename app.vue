@@ -3,8 +3,8 @@
   <div class="min-h-screen bg-gray-100 p-5 font-sans">
     <DebugPanel v-if="false" />
     <SectionBoughtTickets v-if="showBoughtTickets" :cities_array="citiesMap"/>
-    <Form v-if="viagens" :cidades="cidades" :viagens="viagens.allRoutes" />
-    <RoutesList :viagens="viagens.availableTravels" :cidades="cidades" :cities_array="citiesMap" v-if="isInSearchMode"/>
+    <Form v-if="rotas" :cidades="cidades" :viagens="rotas" />
+    <RoutesList :viagens="viagens" :cidades="cidades" :cities_array="citiesMap" v-if="isInSearchMode"/>
     <NotFound v-else/>
     <SeatsSelector/>
   <PassengersForm/>
@@ -41,13 +41,9 @@ const { data: viagens } = await useFetch('/api/get_viagens', {
 });
 
 watchEffect(() => {
+  if (cidades.value) citiesData.value = cidades.value;
   if (rotas.value) routesData.value = rotas.value;
 });
-
-if (cidades && viagens) {
-  citiesData.value = cidades;
-  routesData.value = rotas;
-}
 
 const citiesMap = computed(() => {
   if (!cidades.value) return {};
