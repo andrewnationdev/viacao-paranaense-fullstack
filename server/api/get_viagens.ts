@@ -1,6 +1,6 @@
 import { IRoutes } from "~/types/schema";
 
-export default defineEventHandler(async (event): Promise<T> => {
+export default defineEventHandler(async (event): Promise<IRoutes[]> => {
   const query = getQuery(event);
   const selectedDate = query.date as string;
 

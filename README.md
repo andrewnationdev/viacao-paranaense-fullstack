@@ -48,8 +48,116 @@ interface IRoutes {
 Todas as tipagens localizam-se em `types/schema.ts`.
 
 ### GET_ASSENTOS_DISPONIVEIS
+
+Parâmetros:
+
+`const { id_origin, id_destination, date, departure } = query`
+
+Retorno:
+
+```ts
+interface ISeatsEndpoint {
+    status: IStatus;
+    data: {
+        available_seats: ISeat[];
+        message: string | undefined;
+    }
+}
+```
+
+cada assento tem esse tipo:
+
+```ts
+interface ISeat {
+    id: number;
+    label: string;
+    isOccupied: boolean;
+}
+```
+
 ### GET_CIDADES
+
+Obtém os códigos das cidades. retorna um array
+
+Retorno:
+
+```ts
+export interface ICity {
+    id: number;
+    code: string;
+    name: string;
+}
+
+```
+
 ### GET_ITINERARIO
-### GET_MAIN_DESTINATIONS
+
+Obtém o itinerário/nome da linha para a passagem em formato legível para o usuário.
+
+`const { id_origin, id_destination } = getQuery(event);`
+
+Retorno:
+
+```ts
+export interface IItinerario {
+    itinerary: string;
+    originCode: string;
+    destinationCode: string;
+}
+```
+
 ### GET_VIAGENS
+
+Filtra e retorna as viagens para o usuário
+
+Recebe `date`
+
+Retorno array:
+
+```ts
+interface IRoutes {
+    id: number;
+    id_origin: number;
+    id_destination: number;
+    duration: TDateTime;
+    price: number;
+    service: TServices;
+    departures: IDepartures[],
+}
+```
+
 ### HANDLE_TICKET
+
+Retorna o bilhete do(s) passageiro(s)
+
+`const { id_origin, price, service, id_destination, date, passengers } = body`
+
+Tipo:
+
+```ts
+export interface ITicket {
+    id_service: number;
+    id_ticket: number;
+    id_origin: number;
+    id_destination: number;
+    departure_time: TDateTime;
+    type: string;
+    bus_type: TServices;
+    seat_number: number;
+    departure_date: TDateTime;
+    cpf: string;
+    price: number;
+    boarding_fee: number;
+    toll: number;
+    sha_code: string;
+}
+```
+
+Retorno:
+
+```ts
+interface ITicketEndpoint {
+    status: IStatus;
+    data: ITicket[];
+}
+```

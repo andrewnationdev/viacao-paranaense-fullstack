@@ -17,7 +17,7 @@
 
 <script setup>
 const { data: cidades } = await useFetch('/api/get_cidades');
-const { data: mainDestinations } = await useFetch('/api/get_main_destinations');
+//const { data: mainDestinations } = await useFetch('/api/get_main_destinations');
 
 const {
   origemSelecionada,
