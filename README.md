@@ -2,6 +2,10 @@
 
 Projeto fullstack com Nuxt para uma empresa fictícia de transporte intermunicipal e interestadual.
 
+[▶️ EXECUTAR ONLINE](https://viacaoparanaense.vercel.app/)
+
+[📁 CÓDIGO-FONTE (GITHUB)](https://github.com/andrewnationdev/viacao-paranaense-fullstack)
+
 ## INTRODUÇÃO
 
 Este é o meu primeiro projeto fullstack com o framework NuxtJS/VueJS. Sempre uso ReactJS, normalmente com NextJS, nos meus projetos, sobretudo nos maiores, porém desta vez quis fazer este com NuxtJS, tanto para aprender e ver como funciona na prática, quanto para tirar conclusões pessoais de como ele se difere do NextJS e em quais contextos performaria melhor. Criei o projeto pensando no fluxo de compra de passagens intermunicipais e interestaduais de empresas de transporte reais. A partir de um breve estudo e análise desses fluxos, surgiu este projeto.
