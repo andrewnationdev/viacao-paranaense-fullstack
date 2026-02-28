@@ -49,11 +49,7 @@ Todas as tipagens localizam-se em `types/schema.ts`.
 
 ### GET_ASSENTOS_DISPONIVEIS
 
-Parâmetros:
-
-`const { id_origin, id_destination, date, departure } = query`
-
-Retorno:
+Este endpoint retorna os assentos disponíveis para a viagem escolhida. Recebe como parâmetros `id_origin` com o código da cidade de origem (um inteiro), `id_destination` com o código da cidade de destino (também um número inteiro) e `date` com a data da viagem. Ele retorna o seguinte objeto, com o `status` e um array do tipo `ISeat[]` com todos assentos do veículo, indicando para cada um se estão disponíveis ou não).
 
 ```ts
 interface ISeatsEndpoint {
@@ -65,8 +61,6 @@ interface ISeatsEndpoint {
 }
 ```
 
-cada assento tem esse tipo:
-
 ```ts
 interface ISeat {
     id: number;
@@ -77,9 +71,7 @@ interface ISeat {
 
 ### GET_CIDADES
 
-Obtém os códigos das cidades. retorna um array
-
-Retorno:
+Retorna um array to tipo `ICity[]` com os códigos, ids e nomes legíveis das cidades atendidas pela empresa em suas rotas.
 
 ```ts
 export interface ICity {
@@ -87,16 +79,11 @@ export interface ICity {
     code: string;
     name: string;
 }
-
 ```
 
 ### GET_ITINERARIO
 
-Obtém o itinerário/nome da linha para a passagem em formato legível para o usuário.
-
-`const { id_origin, id_destination } = getQuery(event);`
-
-Retorno:
+Retorna o itinerário (nome da linha) a ser impresso na passagem em formato legível para o usuário, tomando como parâmetros `id_origin` (id da cidade de origem) e `id_destination` (id da cidade de destino). Em `itinerary`, tem-se o nome da linha no formato `ORIGEM X DESTINO` (Ex: `CURITIBA X PONTA GROSSA`).
 
 ```ts
 export interface IItinerario {
@@ -108,11 +95,7 @@ export interface IItinerario {
 
 ### GET_VIAGENS
 
-Filtra e retorna as viagens para o usuário
-
-Recebe `date`
-
-Retorno array:
+Recebe como parâmetro `date`, a data da partida, e retorna todas as viagens para o usuário disponíveis para aquela data, realizando a filtragem (por exemplo, mostrando apenas as passagens até 3 horas antes do horário de embarque). Ele recebe todas as rotas do endpoint `get_routes`. O retorno é um array do tipo `IRoutes[]`.
 
 ```ts
 interface IRoutes {
@@ -128,14 +111,9 @@ interface IRoutes {
 
 ### HANDLE_TICKET
 
-Retorna o bilhete do(s) passageiro(s)
+É responsável por gerar a passagem para o usuário. Requer como parâmetros o `id_origin`, `price` (preço do trecho), `service` (tipo de serviço), `id_destination`, `date`, `passengers
 
-`const { id_origin, price, service, id_destination, date, passengers } = body`
-
-Tipo:
-
-```ts
-export interface ITicket {
+`const { id_origin, price, service, id_destination, date, passengers } = bodyket {
     id_service: number;
     id_ticket: number;
     id_origin: number;
@@ -151,7 +129,6 @@ export interface ITicket {
     toll: number;
     sha_code: string;
 }
-```
 
 Retorno:
 
