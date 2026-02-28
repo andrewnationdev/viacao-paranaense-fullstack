@@ -111,9 +111,10 @@ interface IRoutes {
 
 ### HANDLE_TICKET
 
-É responsável por gerar a passagem para o usuário. Requer como parâmetros o `id_origin`, `price` (preço do trecho), `service` (tipo de serviço), `id_destination`, `date`, `passengers
+É responsável por gerar a passagem para o usuário. Requer como parâmetros o `id_origin`, `price` (preço do trecho), `service` (tipo de serviço), `id_destination`, `date` (data da partida), `passengers` (passageiros e os seus dados), `departure_time` (horário de partida).
 
-`const { id_origin, price, service, id_destination, date, passengers } = bodyket {
+```ts
+ITicket {
     id_service: number;
     id_ticket: number;
     id_origin: number;
@@ -129,8 +130,9 @@ interface IRoutes {
     toll: number;
     sha_code: string;
 }
+```
 
-Retorno:
+O retorno do endpoint é um array do tipo `ITicket[]` com os bilhetes de cada passageiro.
 
 ```ts
 interface ITicketEndpoint {
