@@ -3,12 +3,12 @@ import { ITicket, ITicketEndpoint } from '~/types/schema';
 
 export default defineEventHandler(async (event): Promise<ITicketEndpoint> => {
     const body = await readBody(event)
-    const { id_origin, price, service, id_destination, date, passengers } = body
-
+    const { id_origin, price, service, id_destination, date, departure_time, passengers } = body
+     
     const BOARDING_FEE_REDUCTION = 8;
     const TOLL_RATE = 0.035;
 
-    if (!id_origin || !price || !service || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
+    if (!id_origin || !price || !service || !departure_time || !id_destination || !date || !passengers || !Array.isArray(passengers)) {
         throw createError({
             statusCode: 400,
             statusMessage: 'Parâmetros inválidos.',
