@@ -1,9 +1,10 @@
 <template>
     <div class="w-full p-8 flex flex-col items-center bg-blue-800">
         <h1 class="font-bold text-xl my-2 text-center text-teal-200">VIAÇÃO PARANAENSE</h1>
-        <div class="flex-col text-white">
+        <div class="flex-col text-white gap-4">
             <p>{{WEBSITE.contact.phone_number}}</p>
             <p>{{WEBSITE.contact.email}}</p>
+            <p>{{WEBSITE.contact.address}}</p>
         </div>
         <div class="flex flex-col items-center mt-6 text-white text-center gap-2">
             <a href="https://www.gov.br/antt/pt-br" class="hover:underline">Agência Nacional de Transportes Terrestres (ANTT)</a>

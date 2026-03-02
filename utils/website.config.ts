@@ -9,7 +9,7 @@ export const WEBSITE = {
             facebook: ''
         },
         email: 'contato@viacaoparanaense.com',
-        address: '',
+        address: 'Rua Siqueira Campos, 1234, Ponta Grossa - PR',
         footer_title: 'Viação Paranaense'
     }
 }

@@ -19,6 +19,13 @@ const {
 function showPreviousTickets() {
   if (showBoughtTickets.value == false) {
     showBoughtTickets.value = true;
+    
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+
     return;
   } else {
     showBoughtTickets.value = false;

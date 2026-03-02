@@ -68,7 +68,7 @@ const { data: linha } = useFetch('/api/get_itinerario', {
 });
 
 function resetAll() {
-  tickets.value = [];
+  /*tickets.value = [];
   origemSelecionada.value = "";
   destinoSelecionado.value = "";
   id_selecionado.value = "";
@@ -78,15 +78,15 @@ function resetAll() {
   isInSearchMode.value = false;
   unitPrice.value = 0.0;
   ticketPrice.value = 0.0;
-  paymentConfirmed.value = false;
+  paymentConfirmed.value = false;*/
 
-  window.reload()
-
-  /*window.scroll({
+  window.scroll({
     top: 0,
     left: 0,
     behavior: 'smooth'
-  });*/
+  });
+
+  window.location.reload()
 }
 
 async function downloadPDF(index) {
