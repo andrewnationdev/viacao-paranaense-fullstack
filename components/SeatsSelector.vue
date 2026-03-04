@@ -6,10 +6,10 @@
         Selecionadas:
         <span class="font-bold text-blue-600">
           {{
-    selectedSeats.length > 0
-      ? selectedSeats.sort((a, b) => a - b).join(', ')
-      : 'Nenhuma'
-  }}
+            selectedSeats.length > 0
+              ? selectedSeats.sort((a, b) => a - b).join(', ')
+              : 'Nenhuma'
+          }}
         </span>
       </p>
     </div>
@@ -65,8 +65,8 @@
     <div class="max-w-sm mx-auto mt-8">
       <button v-if="hasAvailableSeats" :disabled="selectedSeats.length === 0"
         class="w-full py-4 rounded-2xl font-black text-lg transition-all shadow-lg active:scale-95" :class="selectedSeats.length > 0
-      ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200'
-      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+    ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200'
+    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
     " @click="confirmSeats()">
         Confirmar ({{ selectedSeats.length }})
       </button>

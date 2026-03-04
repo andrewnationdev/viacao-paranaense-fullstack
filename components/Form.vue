@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { reactive, watch } from 'vue';
+import { watch } from 'vue';
 
 const {
   origemSelecionada,

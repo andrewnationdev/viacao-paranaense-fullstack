@@ -50,13 +50,7 @@ const props = defineProps(['cities_array']);
 
 const {
   origemSelecionada,
-  isInSearchMode,
-  id_selecionado,
   destinoSelecionado,
-  selectedSeats,
-  seatsConfirmed,
-  passengers,
-  ticketPrice,
   tickets
 } = useBusStore();
 

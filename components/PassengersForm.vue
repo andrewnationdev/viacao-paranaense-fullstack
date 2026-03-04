@@ -107,13 +107,13 @@ const finalizarReserva = async () => {
       const updatedHistory = [...history, ...newItems];
       localStorage.setItem('purchases', JSON.stringify(updatedHistory));
     } else {
-      if(process.client){
+      if (process.client) {
         const toast = useToast();
         toast.error(data.status.message);
       }
     }
   } catch (err) {
-    if(process.client){
+    if (process.client) {
       const toast = useToast();
       toast.error(err)
     }

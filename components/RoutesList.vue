@@ -31,7 +31,6 @@ const handleSelectDestination = (origin, destination) => {
 const {
   origemSelecionada,
   isInSearchMode,
-  routesData,
   destinoSelecionado,
 } = useBusStore();
 
